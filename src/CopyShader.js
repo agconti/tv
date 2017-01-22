@@ -1,12 +1,10 @@
-import * as THREE from 'three'
-
 /**
  * @author alteredq / http://alteredqualia.com/
  *
  * Full-screen textured quad shader
  */
 
-export default CopyShader = {
+const CopyShader = {
 
 	uniforms: {
 
@@ -46,3 +44,5 @@ export default CopyShader = {
 	].join( "\n" )
 
 };
+
+export default CopyShader

@@ -7,7 +7,7 @@ import { Pass } from './EffectComposer'
  * @author alteredq / http://alteredqualia.com/
  */
 
-export default const BloomPass = function ( strength, kernelSize, sigma, resolution ) {
+export default function BloomPass( strength, kernelSize, sigma, resolution ) {
 
 	Pass.call( this );
 

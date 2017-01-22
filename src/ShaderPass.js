@@ -5,7 +5,7 @@ import { Pass } from './EffectComposer'
  * @author alteredq / http://alteredqualia.com/
  */
 
-ShaderPass = function ( shader, textureID ) {
+function ShaderPass( shader, textureID ) {
 
 	Pass.call( this );
 
@@ -68,3 +68,5 @@ ShaderPass.prototype = Object.assign( Object.create( Pass.prototype ), {
 	}
 
 } );
+
+export default ShaderPass

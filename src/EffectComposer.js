@@ -7,7 +7,7 @@ import { MaskPass, ClearMaskPass} from './MaskPass'
  * @author alteredq / http://alteredqualia.com/
  */
 
-export const EffectComposer = function ( renderer, renderTarget ) {
+export function EffectComposer( renderer, renderTarget ) {
 
 	this.renderer = renderer;
 
@@ -151,7 +151,7 @@ Object.assign( EffectComposer.prototype, {
 } );
 
 
-export const Pass = function () {
+export function Pass() {
 
 	// if set to true, the pass is processed by the composer
 	this.enabled = true;

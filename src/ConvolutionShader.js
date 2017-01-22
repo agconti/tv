@@ -1,3 +1,5 @@
+import * as THREE from 'three'
+
 /**
  * @author alteredq / http://alteredqualia.com/
  *
@@ -6,7 +8,7 @@
  * http://o3d.googlecode.com/svn/trunk/samples/convolution.html
  */
 
-THREE.ConvolutionShader = {
+const ConvolutionShader = {
 
 	defines: {
 
@@ -99,3 +101,5 @@ THREE.ConvolutionShader = {
 	}
 
 };
+
+export default ConvolutionShader

@@ -1,9 +1,10 @@
 import { Pass } from './EffectComposer'
+
 /**
  * @author alteredq / http://alteredqualia.com/
  */
 
-export default const RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
+export default function RenderPass( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
 
 	Pass.call( this );
 
