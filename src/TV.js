@@ -2,22 +2,45 @@ import React, { Component } from 'react'
 // import './demo'
 
 const display = 'block'
-const assetsType = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
-const assets = [
-  'video-1.mp4'
-, 'video-2.mp4'
-, 'video-3.mp4'
-]
-
-const sourceItem = (src, index) => (
-  <source key={index} src={`${process.env.PUBLIC_URL}/${src}`} type={assetsType} />
-)
+const unstarted = -1
 
 export default class TV extends Component {
+  state = {
+    assetIndex: unstarted,
+    assets: [
+      'video-1.mp4'
+    , 'video-2.mp4'
+    , 'video-3.mp4'
+    ]
+  }
+  constructor(props){
+    super(props)
+    this.getAsset = this.getAsset
+  }
+  componentWillMount() {
+    this.next()
+  }
+  componentDidMount() {
+    this.player.addEventListener('ended', () => this.next())
+  }
+  getAsset() {
+    const {assets, assetIndex} = this.state
+    const nextAssetIndex = assetIndex + 1
+    const assetSrc = `${process.env.PUBLIC_URL}/${assets[nextAssetIndex % assets.length]}`
+
+    return {assetSrc, assetIndex: nextAssetIndex}
+  }
+  next() {
+    this.setState(this.getAsset())
+  }
   render() {
+    const { assetSrc } = this.state
     return (
-      <video id={"video"} autoPlay loop style={{display}}>
-        {assets.map(sourceItem)}
+      <video ref={el => this.player = el}
+             id={"video"}
+             autoPlay
+             style={{display}}
+             src={assetSrc}>
       </video>
     )
   }
