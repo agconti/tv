@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-// import './demo'
+import start from './demo'
 
-const display = 'block'
+const display = 'none'
 const unstarted = -1
 
 export default class TV extends Component {
@@ -22,6 +22,7 @@ export default class TV extends Component {
   }
   componentDidMount() {
     this.player.addEventListener('ended', () => this.next())
+    start(this.player)
   }
   getAsset() {
     const {assets, assetIndex} = this.state
