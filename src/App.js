@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, PlaceholderImageItem } from './grid'
-import TV from './tv/TV'
+import { TV } from './tv'
 
 
 class App extends Component {
