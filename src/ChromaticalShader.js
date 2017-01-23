@@ -1,7 +1,4 @@
-import * as THREE from 'three'
-
 const vertexShader = `
-uniform vec2 resolution;
 uniform float time;
 
 varying vec2 vUv;
@@ -38,7 +35,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-uniform vec3 resolution;
 uniform float time;
 uniform sampler2D tDiffuse;
 
@@ -49,7 +45,7 @@ void main()
 {
   vec4 color = texture2D( tDiffuse, vUv ); //agc
 	// distance from center of image, used to adjust blur
-	vec2 uv = fragCoord.xy / resolution.xy;
+	vec2 uv = -1.0 + 2.0 * vUv;
 	float d = length(uv - vec2(0.5,0.5));
 
 	// blur amount
@@ -82,7 +78,6 @@ void main()
 const uniforms = {
   time: { value: 0.0 }
 , tDiffuse: { value: null }
-, resolution: { value: new THREE.Vector2() }
 }
 const ChromaticalShader = {
 	uniforms
