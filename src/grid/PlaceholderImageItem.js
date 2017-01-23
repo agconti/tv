@@ -1,7 +1,7 @@
 import React from 'react'
 import './grid.css'
 
-const PlaceholdImageItem = props => {
+const PlaceholderImageItem = props => {
   const {width, height} = props
   return (
     <div className={"grid-item"}>
@@ -15,4 +15,4 @@ export const getDimensions = contianer => {
   return { width: clientWidth, height: clientHeight}
 }
 
-export default PlaceholdImageItem
+export default PlaceholderImageItem

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import Grid from './grid/Grid'
-import PlaceholdImageItem from './grid/PlaceholderImageItem'
-import TV from './TV/TV'
+import { Grid, PlaceholderImageItem } from './grid'
+import TV from './tv/TV'
 
 
 class App extends Component {
@@ -20,24 +19,24 @@ class App extends Component {
   render() {
     return (
       <Grid>
-        <PlaceholdImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
         <TV {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
-        <PlaceholdImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderImageItem {...this.state}/>
       </Grid>
     )
   }
