@@ -79,27 +79,25 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     var effectSepia = new ShaderPass( SepiaShader );
     var effectFilm = new FilmPass( 0.25, 0.15, 4096, false );
     var effectVignette = new ShaderPass( VignetteShader );
-    effectChromatical.uniforms['time'].value += clock.getDelta()
-    effectChromatical.uniforms[ "resolution" ].x = containerWidth;
-    effectChromatical.uniforms[ "resolution" ].y = containerHeight;
+    effectChromatical.uniforms.time.value += clock.getDelta()
     effectSepia.uniforms[ "amount" ].value = 0.4;
     effectVignette.uniforms[ "offset" ].value = 0.95;
     effectVignette.uniforms[ "darkness" ].value = 0.9;
 
     // effectFilm.renderToScreen = true
-    // effectVignette.renderToScreen = true
-    effectChromatical.renderToScreen = true
+    effectVignette.renderToScreen = true
+    // effectChromatical.renderToScreen = true
 
     composer = new EffectComposer( renderer );
     var renderScene = new TexturePass( texture );
     composer.addPass( renderModel );
     composer.addPass( renderScene );
-    composer.addPass( effectChromatical );
+    // composer.addPass( effectChromatical );
     // composer.addPass( effectSepia );
     // composer.addPass( effectFilm );
     // composer.addPass( effectVignette );
 
-    // renderScene.uniforms[ "tDiffuse" ].value = texture;
+    renderScene.uniforms[ "tDiffuse" ].value = texture;
     window.addEventListener( 'resize', onWindowResize, false );
   }
   function onWindowResize() {

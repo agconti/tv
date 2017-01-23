@@ -1,8 +1,8 @@
 import * as THREE from 'three'
 
 const vertexShader = `
-uniform vec2 resolution;
 uniform float time;
+uniform vec2 resolution;
 
 varying vec2 vUv;
 
@@ -10,7 +10,6 @@ void main() {
 
 	vUv = uv;
 	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-
  }
 `
 const fragmentShader = `
@@ -38,18 +37,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-uniform vec3 resolution;
 uniform float time;
 uniform sampler2D tDiffuse;
+uniform vec2 resolution;
 
 varying vec2 vUv;
 
-// void main(out vec4 fragColor, in vec2 fragCoord )
 void main()
 {
   vec4 color = texture2D( tDiffuse, vUv ); //agc
 	// distance from center of image, used to adjust blur
-	vec2 uv = fragCoord.xy / resolution.xy;
+  // vec2 uv = gl_FragCoord.xy / resolution.xy;
+	vec2 uv = -1.0 + 2.0 * vUv; // agc
 	float d = length(uv - vec2(0.5,0.5));
 
 	// blur amount
@@ -73,8 +72,6 @@ void main()
 
 	// vignette
 	col *= 1.0 - d * 0.5;
-
-  vec4 fragColor = vec4(col,1.0);
   gl_FragColor = vec4(col, 1.0); // agc
 }
 `
@@ -82,7 +79,7 @@ void main()
 const uniforms = {
   time: { value: 0.0 }
 , tDiffuse: { value: null }
-, resolution: { value: new THREE.Vector2() }
+, resolution: { value: THREE.Vector2() }
 }
 const ChromaticalShader = {
 	uniforms
