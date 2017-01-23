@@ -83,16 +83,17 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     effectVignette.uniforms[ "darkness" ].value = 0.9;
 
     // effectFilm.renderToScreen = true
-    effectVignette.renderToScreen = true
+    // effectVignette.renderToScreen = true
+    effectChromatical.renderToScreen = true
 
     composer = new EffectComposer( renderer );
     var renderScene = new TexturePass( texture );
     composer.addPass( renderModel );
     composer.addPass( renderScene );
-    // composer.addPass( effectChromatical );
-    composer.addPass( effectSepia );
-    composer.addPass( effectFilm );
-    composer.addPass( effectVignette );
+    composer.addPass( effectChromatical );
+    // composer.addPass( effectSepia );
+    // composer.addPass( effectFilm );
+    // composer.addPass( effectVignette );
 
     renderScene.uniforms[ "tDiffuse" ].value = texture;
     window.addEventListener( 'resize', onWindowResize, false );

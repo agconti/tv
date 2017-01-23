@@ -1,6 +1,11 @@
 import * as THREE from 'three'
+
 const vertexShader = `
+uniform vec2 resolution;
+uniform float time;
+
 varying vec2 vUv;
+
 void main() {
 
 	vUv = uv;
@@ -36,10 +41,13 @@ THE SOFTWARE.
 uniform vec3 iResolution;
 uniform float time;
 uniform sampler2D tDiffuse;
+
 varying vec2 vUv;
 
-void mainImage( out vec4 fragColor, in vec2 fragCoord )
+// void main(out vec4 fragColor, in vec2 fragCoord )
+void main()
 {
+  vec4 color = texture2D( tDiffuse, vUv ); //agc
 	// distance from center of image, used to adjust blur
 	vec2 uv = fragCoord.xy / iResolution.xy;
 	float d = length(uv - vec2(0.5,0.5));
@@ -54,10 +62,10 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	blur *= d;
 
 	// final color
-    vec3 col;
-    col.r = texture2D( tDiffuse, vec2(uv.x+blur,uv.y) ).r;
-    col.g = texture2D( tDiffuse, uv ).g;
-    col.b = texture2D( tDiffuse, vec2(uv.x-blur,uv.y) ).b;
+  vec3 col;
+  col.r = texture2D( tDiffuse, vec2(uv.x+blur,uv.y) ).r;
+  col.g = texture2D( tDiffuse, uv ).g;
+  col.b = texture2D( tDiffuse, vec2(uv.x-blur,uv.y) ).b;
 
 	// scanline
 	float scanline = sin(uv.y*800.0)*0.04;
@@ -66,13 +74,15 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	// vignette
 	col *= 1.0 - d * 0.5;
 
-    fragColor = vec4(col,1.0);
+  vec4 fragColor = vec4(col,1.0);
+  gl_FragColor = vec4(col, 1.0); // agc
 }
 `
 
 const uniforms = {
-    time: { value: 0.0 }
+  time: { value: 0.0 }
 , tDiffuse: { value: null }
+, iResolution: { value: new THREE.Vector2() }
 }
 const ChromaticalShader = {
 	uniforms
