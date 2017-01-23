@@ -1,8 +1,10 @@
 import * as THREE from 'three'
-import CopyShader from './CopyShader'
-import BloomPass from './BloomPass'
 import RenderPass from './RenderPass'
 import ShaderPass from './ShaderPass'
+import FilmPass from './FilmPass'
+import TexturePass from './TexturePass'
+import VignetteShader from './VignetteShader'
+import SepiaShader from './SepiaShader'
 import { EffectComposer } from './EffectComposer'
 
 const cameraDistance = 100
@@ -27,9 +29,6 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     camera = new THREE.OrthographicCamera( -windowHalfX, windowHalfX, windowHalfY, -windowHalfY, -10000, 10000 );
     camera.position.z = cameraDistance
     scene = new THREE.Scene();
-    var light = new THREE.DirectionalLight( 0xffffff );
-    light.position.set( 0.5, 1, 1 ).normalize();
-    scene.add( light );
     renderer = new THREE.WebGLRenderer( { antialias: false } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( containerWidth, containerHeight );
@@ -74,14 +73,25 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     renderer.autoClear = false;
     // postprocessing
     var renderModel = new RenderPass( scene, camera );
-    var effectBloom = new BloomPass( 1.3 );
-    var effectCopy = new ShaderPass( CopyShader );
-    effectCopy.renderToScreen = true;
+    var effectSepia = new ShaderPass( SepiaShader );
+    var effectFilm = new FilmPass( 0.35, 0.025, 648, false );
+    var effectVignette = new ShaderPass( VignetteShader );
+    effectSepia.uniforms[ "amount" ].value = 0.9;
+    effectVignette.uniforms[ "offset" ].value = 0.95;
+    effectVignette.uniforms[ "darkness" ].value = 0.5;
+
+    // effectFilm.renderToScreen = true
+    effectVignette.renderToScreen = true
+
     composer = new EffectComposer( renderer );
+    var renderScene = new TexturePass( texture );
     composer.addPass( renderModel );
-    composer.addPass( effectBloom );
-    composer.addPass( effectCopy );
-    //
+    composer.addPass( renderScene );
+    composer.addPass( effectSepia );
+    composer.addPass( effectFilm );
+    composer.addPass( effectVignette );
+
+    renderScene.uniforms[ "tDiffuse" ].value = texture;
     window.addEventListener( 'resize', onWindowResize, false );
   }
   function onWindowResize() {
