@@ -5,6 +5,7 @@ import FilmPass from './FilmPass'
 import TexturePass from './TexturePass'
 import VignetteShader from './VignetteShader'
 import SepiaShader from './SepiaShader'
+import ChromaticalShader from './ChromaticalShader'
 import { EffectComposer } from './EffectComposer'
 
 const cameraDistance = 100
@@ -73,12 +74,13 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     renderer.autoClear = false;
     // postprocessing
     var renderModel = new RenderPass( scene, camera );
+    var effectChromatical = new ShaderPass(ChromaticalShader)
     var effectSepia = new ShaderPass( SepiaShader );
-    var effectFilm = new FilmPass( 0.35, 0.025, 648, false );
+    var effectFilm = new FilmPass( 0.25, 0.15, 4096, false );
     var effectVignette = new ShaderPass( VignetteShader );
-    effectSepia.uniforms[ "amount" ].value = 0.9;
+    effectSepia.uniforms[ "amount" ].value = 0.4;
     effectVignette.uniforms[ "offset" ].value = 0.95;
-    effectVignette.uniforms[ "darkness" ].value = 0.5;
+    effectVignette.uniforms[ "darkness" ].value = 0.9;
 
     // effectFilm.renderToScreen = true
     effectVignette.renderToScreen = true
@@ -87,6 +89,7 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     var renderScene = new TexturePass( texture );
     composer.addPass( renderModel );
     composer.addPass( renderScene );
+    // composer.addPass( effectChromatical );
     composer.addPass( effectSepia );
     composer.addPass( effectFilm );
     composer.addPass( effectVignette );
