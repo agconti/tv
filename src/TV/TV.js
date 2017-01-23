@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import start from './demo'
+import './tv.css'
+import start from '../demo'
 
 const display = 'none'
 const unstarted = -1
@@ -23,7 +24,7 @@ export default class TV extends Component {
   componentDidMount() {
     const { width, height } = this.props
 
-    this.player.addEventListener('ended', () => this.next())
+    this.player.addEventListener('ended', () => this.next(), true)
     start(this.container, this.player, width, height)
   }
   getAsset() {
@@ -43,9 +44,10 @@ export default class TV extends Component {
 
     return (
       <div ref={el => this.container = el}
+           className={'grid-item tv'}
            style={{width, height}}>
         <video ref={el => this.player = el}
-               id={"video"}
+               id={'video'}
                autoPlay
                style={{display}}
                src={assetSrc}>

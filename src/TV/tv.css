@@ -1,0 +1,12 @@
+.tv {
+  border-radius: 1.5em;
+  background: transparent;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.tv canvas {
+  position: absolute;
+  z-index: 0;
+}
