@@ -78,6 +78,8 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     var effectSepia = new ShaderPass( SepiaShader );
     var effectFilm = new FilmPass( 0.25, 0.15, 4096, false );
     var effectVignette = new ShaderPass( VignetteShader );
+    effectChromatical.uniforms[ "resolution" ].x = containerWidth;
+    effectChromatical.uniforms[ "resolution" ].y = containerHeight;
     effectSepia.uniforms[ "amount" ].value = 0.4;
     effectVignette.uniforms[ "offset" ].value = 0.95;
     effectVignette.uniforms[ "darkness" ].value = 0.9;

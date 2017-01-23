@@ -38,7 +38,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-uniform vec3 iResolution;
+uniform vec3 resolution;
 uniform float time;
 uniform sampler2D tDiffuse;
 
@@ -49,7 +49,7 @@ void main()
 {
   vec4 color = texture2D( tDiffuse, vUv ); //agc
 	// distance from center of image, used to adjust blur
-	vec2 uv = fragCoord.xy / iResolution.xy;
+	vec2 uv = fragCoord.xy / resolution.xy;
 	float d = length(uv - vec2(0.5,0.5));
 
 	// blur amount
@@ -82,7 +82,7 @@ void main()
 const uniforms = {
   time: { value: 0.0 }
 , tDiffuse: { value: null }
-, iResolution: { value: new THREE.Vector2() }
+, resolution: { value: new THREE.Vector2() }
 }
 const ChromaticalShader = {
 	uniforms
