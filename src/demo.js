@@ -5,15 +5,15 @@ import RenderPass from './RenderPass'
 import ShaderPass from './ShaderPass'
 import { EffectComposer } from './EffectComposer'
 
-export default function start (videoEl) {
+export default function start (containerEl, videoEl, containerWidth, containerHeight) {
   var container;
   var camera, scene, renderer;
   var video, texture, material, mesh;
   var composer;
   var mouseX = 0;
   var mouseY = 0;
-  var windowHalfX = window.innerWidth / 2;
-  var windowHalfY = window.innerHeight / 2;
+  var windowHalfX = containerWidth / 2;
+  var windowHalfY = containerHeight / 2;
   var cube_count,
   meshes = [],
   materials = [],
@@ -22,9 +22,7 @@ export default function start (videoEl) {
   init();
   animate();
   function init() {
-    container = document.createElement( 'div' );
-    document.body.appendChild( container );
-    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera = new THREE.PerspectiveCamera( 40, containerWidth / containerHeight, 1, 10000 );
     camera.position.z = 500;
     scene = new THREE.Scene();
     var light = new THREE.DirectionalLight( 0xffffff );
@@ -32,8 +30,8 @@ export default function start (videoEl) {
     scene.add( light );
     renderer = new THREE.WebGLRenderer( { antialias: false } );
     renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize( window.innerWidth, window.innerHeight );
-    container.appendChild( renderer.domElement );
+    renderer.setSize( containerWidth, containerHeight );
+    containerEl.appendChild( renderer.domElement );
     video = videoEl;
     texture = new THREE.VideoTexture( video );
     texture.minFilter = THREE.LinearFilter;
@@ -86,11 +84,11 @@ export default function start (videoEl) {
     window.addEventListener( 'resize', onWindowResize, false );
   }
   function onWindowResize() {
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-    camera.aspect = window.innerWidth / window.innerHeight;
+    windowHalfX = containerWidth / 2;
+    windowHalfY = containerHeight / 2;
+    camera.aspect = containerWidth / containerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( containerWidth, containerHeight );
     composer.reset();
   }
   function change_uvs( geometry, unitx, unity, offsetx, offsety ) {

@@ -4,7 +4,8 @@ import './grid.css'
 const PlaceholdImageItem = props => {
   const {width, height} = props
   return (
-    <div className={"grid-item"}>
+    <div className={"grid-item"}
+         style={props} >
       <img src={`http://placehold.it/${width}x${height}`} alt={"Placeholder"} />
     </div>
   )

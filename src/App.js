@@ -4,8 +4,8 @@ import PlaceholdImageItem from './PlaceholderImageItem'
 import TV from './TV'
 
 const getDimensions = () => ({
-  width: window.innerWidth / 3
-, height: 200
+  width: Math.floor(window.innerWidth / 3.15)
+, height: 225
 })
 
 
@@ -14,7 +14,8 @@ class App extends Component {
     return (
       <Grid>
         <PlaceholdImageItem {...getDimensions()}/>
-        <TV />
+        <TV {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
         <PlaceholdImageItem {...getDimensions()}/>
         <PlaceholdImageItem {...getDimensions()}/>
         <PlaceholdImageItem {...getDimensions()}/>

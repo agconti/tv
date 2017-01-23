@@ -21,8 +21,10 @@ export default class TV extends Component {
     this.next()
   }
   componentDidMount() {
+    const { width, height } = this.props
+
     this.player.addEventListener('ended', () => this.next())
-    start(this.player)
+    start(this.container, this.player, width, height)
   }
   getAsset() {
     const {assets, assetIndex} = this.state
@@ -36,13 +38,18 @@ export default class TV extends Component {
   }
   render() {
     const { assetSrc } = this.state
+    const { width, height } = this.props
+
     return (
-      <video ref={el => this.player = el}
-             id={"video"}
-             autoPlay
-             style={{display}}
-             src={assetSrc}>
-      </video>
+      <div ref={el => this.container = el}
+           style={{width, height}}>
+        <video ref={el => this.player = el}
+               id={"video"}
+               autoPlay
+               style={{display}}
+               src={assetSrc}>
+        </video>
+      </div>
     )
   }
 }
