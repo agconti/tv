@@ -95,7 +95,7 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     // composer.addPass( effectChromatical );
     // composer.addPass( effectSepia );
     // composer.addPass( effectFilm );
-    // composer.addPass( effectVignette );
+    composer.addPass( effectVignette );
 
     renderScene.uniforms[ "tDiffuse" ].value = texture;
     window.addEventListener( 'resize', onWindowResize, false );

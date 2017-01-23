@@ -1,10 +1,10 @@
 import React from 'react'
 import './grid.css'
 
-const MasonryGrid = props => (
+const Grid = props => (
   <section className={"grid"}>
     {props.children}
   </section>
 )
 
-export default MasonryGrid
+export default Grid
