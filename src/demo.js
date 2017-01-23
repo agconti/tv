@@ -23,7 +23,6 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
   animate();
   function init() {
     camera = new THREE.PerspectiveCamera( 40, containerWidth / containerHeight, 1, 10000 );
-    camera.position.z = 500;
     scene = new THREE.Scene();
     var light = new THREE.DirectionalLight( 0xffffff );
     light.position.set( 0.5, 1, 1 ).normalize();
