@@ -1,9 +1,7 @@
 import React from 'react'
 import './grid.css'
 
-const PlaceholderImageItem = props => {
-  const {width, height} = props
-  return (
+const PlaceholderImageItem = ({width, height}) => (
     <div className={"grid-item"}>
       <img src={`http://placehold.it/${width}x${height}`} alt={"Placeholder"} />
     </div>

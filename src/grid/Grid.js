@@ -1,9 +1,9 @@
 import React from 'react'
 import './grid.css'
 
-const Grid = props => (
+const Grid = ({children}) => (
   <section className={"grid"}>
-    {props.children}
+    {children}
   </section>
 )
 
