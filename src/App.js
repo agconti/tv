@@ -1,12 +1,36 @@
 import React, { Component } from 'react'
+import Grid from './Grid'
+import PlaceholdImageItem from './PlaceholderImageItem'
 import TV from './TV'
+
+const getDimensions = () => ({
+  width: window.innerWidth / 3
+, height: 200
+})
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Grid>
+        <PlaceholdImageItem {...getDimensions()}/>
         <TV />
-      </div>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+        <PlaceholdImageItem {...getDimensions()}/>
+      </Grid>
     )
   }
 }

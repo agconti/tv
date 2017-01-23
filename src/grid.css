@@ -1,0 +1,8 @@
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.grid-item {
+  width: 32%;
+}
