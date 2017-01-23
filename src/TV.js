@@ -30,10 +30,11 @@ export default class TV extends Component {
     const {assets, assetIndex} = this.state
     const nextAssetIndex = assetIndex + 1
     const assetSrc = `${process.env.PUBLIC_URL}/${assets[nextAssetIndex % assets.length]}`
-
+    console.info(assetSrc)
     return {assetSrc, assetIndex: nextAssetIndex}
   }
   next() {
+    console.info('next')
     this.setState(this.getAsset())
   }
   render() {

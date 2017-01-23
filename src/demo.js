@@ -5,6 +5,8 @@ import RenderPass from './RenderPass'
 import ShaderPass from './ShaderPass'
 import { EffectComposer } from './EffectComposer'
 
+const cameraDistance = 100
+
 export default function start (containerEl, videoEl, containerWidth, containerHeight) {
   var container;
   var camera, scene, renderer;
@@ -17,12 +19,13 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
   var cube_count,
   meshes = [],
   materials = [],
-  xgrid = 20,
-  ygrid = 10;
+  xgrid = 1,
+  ygrid = 1;
   init();
   animate();
   function init() {
-    camera = new THREE.PerspectiveCamera( 40, containerWidth / containerHeight, 1, 10000 );
+    camera = new THREE.OrthographicCamera( -windowHalfX, windowHalfX, windowHalfY, -windowHalfY, -10000, 10000 );
+    camera.position.z = cameraDistance
     scene = new THREE.Scene();
     var light = new THREE.DirectionalLight( 0xffffff );
     light.position.set( 0.5, 1, 1 ).normalize();
@@ -50,7 +53,7 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
     for ( j = 0; j < ygrid; j ++ ) {
       ox = i;
       oy = j;
-      geometry = new THREE.BoxGeometry( xsize, ysize, xsize );
+      geometry = new THREE.BoxGeometry( containerWidth, containerHeight, 1);
       change_uvs( geometry, ux, uy, ox, oy );
       materials[ cube_count ] = new THREE.MeshLambertMaterial( parameters );
       material = materials[ cube_count ];
@@ -58,18 +61,17 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
       material.saturation = 1 - j/ygrid;
       material.color.setHSL( material.hue, material.saturation, 0.5 );
       mesh = new THREE.Mesh( geometry, material );
-      mesh.position.x =   ( i - xgrid/2 ) * xsize;
-      mesh.position.y =   ( j - ygrid/2 ) * ysize;
+      // mesh.position.x =   ( i - xgrid/2 ) * xsize;
+      // mesh.position.y =   ( j - ygrid/2 ) * ysize;
       mesh.position.z = 0;
       mesh.scale.x = mesh.scale.y = mesh.scale.z = 1;
       scene.add( mesh );
-      mesh.dx = 0.001 * ( 0.5 - Math.random() );
-      mesh.dy = 0.001 * ( 0.5 - Math.random() );
+      // mesh.dx = 0.001 * ( 0.5 - Math.random() );
+      // mesh.dy = 0.001 * ( 0.5 - Math.random() );
       meshes[ cube_count ] = mesh;
       cube_count += 1;
     }
     renderer.autoClear = false;
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
     // postprocessing
     var renderModel = new RenderPass( scene, camera );
     var effectBloom = new BloomPass( 1.3 );
@@ -113,8 +115,6 @@ export default function start (containerEl, videoEl, containerWidth, containerHe
   var h, counter = 1;
   function render() {
     var time = Date.now() * 0.00005;
-    camera.position.x += ( mouseX - camera.position.x ) * 0.05;
-    camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
     camera.lookAt( scene.position );
     for ( let i = 0; i < cube_count; i ++ ) {
       material = materials[ i ];
