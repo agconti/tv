@@ -37,7 +37,9 @@ export default class TV extends Component {
   }
   render() {
     const { assetSrc } = this.state
-    const { width, height } = this.props
+    let { width, height } = this.props
+    width *= 2
+    height *= 2
 
     return (
       <div ref={el => this.container = el}

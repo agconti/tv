@@ -14,7 +14,7 @@ class App extends Component {
   }
   getDimensions() {
     this.setState({
-      width: Math.floor(window.innerWidth / 3.15)
+      width: Math.floor(window.innerWidth / 4.15)
     , height: 225
     })
   }

@@ -17,7 +17,7 @@ function makeIterator(array){
 }
 
 const greyGifsIterator = makeIterator([
-, 'http://i.giphy.com/1OvYypecncSzu.mp4'
+  'http://i.giphy.com/1OvYypecncSzu.mp4'
 , 'http://i.giphy.com/YGSpb7oIhENa.mp4'
 , 'https://media.giphy.com/media/p86I8qRhEc132/giphy.mp4'
 , 'http://i.giphy.com/9PD6etrOTUxby.mp4'
