@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './tv.css'
+import '../grid/ml.css'
 import start from '../demo'
 
 const display = 'none'
@@ -43,9 +44,10 @@ export default class TV extends Component {
 
     return (
       <div ref={el => this.container = el}
-           className={'grid-item tv'}
+           className={'ml-pnl tv'}
            style={{width, height}}>
         <video ref={el => this.player = el}
+               className={"ml-pnl__cntnt"}
                id={'video'}
                autoPlay
                style={{display}}

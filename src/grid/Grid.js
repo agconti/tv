@@ -1,8 +1,8 @@
 import React from 'react'
-import './grid.css'
+import './ml.css'
 
 const Grid = ({children}) => (
-  <section className={"grid"}>
+  <section className={"ml"}>
     {children}
   </section>
 )

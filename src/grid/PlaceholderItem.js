@@ -1,10 +1,15 @@
 import React from 'react'
 import { greyGifFactory } from './fixtures'
-import './grid.css'
+import './ml.css'
 
-const PlaceholderItem = ({width, height}) => (
-  <div className={"grid-item"} style={{width, height}}>
-    <video autoPlay loop preload src={greyGifFactory()} alt={"Placeholder"} />
+const PlaceholderItem = () => (
+  <div className={"ml-pnl"}>
+    <video className={"ml-pnl__cntnt"}
+           autoPlay
+           loop
+           preload
+           src={greyGifFactory()}
+           alt={"Placeholder"} />
   </div>
 )
 
