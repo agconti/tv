@@ -4,9 +4,18 @@
   z-index: 1;
   position: relative;
   overflow: hidden;
+  min-width: 100%;
+}
+
+.tv:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  float: left;
 }
 
 .tv canvas {
   position: absolute;
   z-index: 0;
+  /*width: 100%;*/
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './tv.css'
-import '../grid/ml.css'
 import start from '../demo'
 
 const display = 'none'
@@ -18,10 +17,9 @@ export default class TV extends Component {
     this.next()
   }
   componentDidMount() {
-    const { width, height } = this.props
-
+    const { clientWidth } = this.container
     this.player.addEventListener('ended', () => this.next())
-    start(this.container, this.player, width, height)
+    start(this.container, this.player, clientWidth, clientWidth)
   }
   componentWillUnmount() {
     this.player.removeEventListener('ended', () => this.next())
@@ -38,17 +36,11 @@ export default class TV extends Component {
   }
   render() {
     const { assetSrc } = this.state
-    let { width, height } = this.props
-    width *= 2
-    height *= 2
 
     return (
       <div ref={el => this.container = el}
-           className={'tv'}
-           style={{width, height}}>
+           className={'tv'}>
         <video ref={el => this.player = el}
-               className={"ml-pnl__cntnt"}
-               id={'video'}
                autoPlay
                style={{display}}
                src={assetSrc}>

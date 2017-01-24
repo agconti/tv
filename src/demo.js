@@ -11,7 +11,7 @@ import { EffectComposer } from './EffectComposer'
 
 const antialias = false
 
-function init(container, video, containerWidth, containerHeight, windowHalfX, windowHalfY) {
+function init(container, video, containerWidth, containerHeight, containerHalfWidth, containerHalfHeight) {
   const clock = new THREE.Clock()
   const scene = new THREE.Scene()
 
@@ -32,7 +32,7 @@ function init(container, video, containerWidth, containerHeight, windowHalfX, wi
   const tvMesh = new THREE.Mesh(tvGemometry, tvMaterial)
   scene.add(tvMesh)
 
-  const camera = new THREE.OrthographicCamera(-windowHalfX, windowHalfX, windowHalfY, -windowHalfY, 1, 10000 )
+  const camera = new THREE.OrthographicCamera(-containerHalfWidth, containerHalfWidth, containerHalfHeight, -containerHalfHeight, 1, 10000 )
   camera.position.z = 1
   camera.lookAt(tvMesh.position)
 
@@ -66,8 +66,8 @@ function init(container, video, containerWidth, containerHeight, windowHalfX, wi
 }
 
 function onWindowResize(renderer, composer, camera, containerWidth, containerHeight) {
-  // windowHalfX = containerWidth / 2
-  // windowHalfY = containerHeight / 2
+  // containerHalfWidth = containerWidth / 2
+  // containerHalfHeight = containerHeight / 2
 
   camera.aspect = containerWidth / containerHeight
   camera.updateProjectionMatrix()
@@ -76,13 +76,11 @@ function onWindowResize(renderer, composer, camera, containerWidth, containerHei
   composer.reset()
 }
 
-const start = (container, video) => {
-  const containerWidth = container.clientWidth
-  const containerHeight = container.clientHeight
-  const windowHalfX = containerWidth / 2
-  const windowHalfY = containerHeight / 2
+const start = (container, video, width, height) => {
+  const containerHalfWidth = width / 2
+  const containerHalfHeight = height / 2
 
-  const {renderer, composer, camera} = init(container, video, containerWidth, containerHeight, windowHalfX, windowHalfY)
+  const {renderer, composer, camera} = init(container, video, width, height, containerHalfWidth, containerHalfHeight)
   window.addEventListener('resize', () => onWindowResize(renderer, composer, camera, container.innerWidth, container.innerHeight))
 
   ;(function animloop(){

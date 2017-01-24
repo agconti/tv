@@ -22,11 +22,11 @@ class App extends Component {
     return (
       <Grid>
         <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
         <GridItem>
           <TV assets={tvGifs} {...this.state}/>
         </GridItem>
-        <GreyGifGridItem />
-        <GreyGifGridItem />
         <GreyGifGridItem />
         <GreyGifGridItem />
         <GreyGifGridItem />
