@@ -4,7 +4,7 @@ import './grid.css'
 
 const PlaceholderItem = ({width, height}) => (
   <div className={"grid-item"} style={{width, height}}>
-    <video autoPlay loop src={greyGifFactory()} alt={"Placeholder"} />
+    <video autoPlay loop preload src={greyGifFactory()} alt={"Placeholder"} />
   </div>
 )
 

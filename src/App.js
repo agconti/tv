@@ -30,15 +30,6 @@ class App extends Component {
         <PlaceholderItem {...this.state}/>
         <PlaceholderItem {...this.state}/>
         <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
       </Grid>
     )
   }
