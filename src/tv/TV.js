@@ -44,7 +44,7 @@ export default class TV extends Component {
 
     return (
       <div ref={el => this.container = el}
-           className={'ml-pnl tv'}
+           className={'tv'}
            style={{width, height}}>
         <video ref={el => this.player = el}
                className={"ml-pnl__cntnt"}

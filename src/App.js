@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, PlaceholderItem,  tvGifs, greyGifFactory} from './grid'
+import { Grid, GridItem, GreyGifGridItem,  tvGifs, greyGifFactory} from './grid'
 import { TV } from './tv'
 
 class App extends Component {
@@ -21,15 +21,17 @@ class App extends Component {
   render() {
     return (
       <Grid>
-        <PlaceholderItem {...this.state}/>
-        <TV assets={tvGifs} {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
-        <PlaceholderItem {...this.state}/>
+        <GreyGifGridItem />
+        <GridItem>
+          <TV assets={tvGifs} {...this.state}/>
+        </GridItem>
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
       </Grid>
     )
   }
