@@ -24,7 +24,7 @@ export default class TV extends Component {
   componentDidMount() {
     const { width, height } = this.props
 
-    this.player.addEventListener('ended', () => this.next(), true)
+    this.player.addEventListener('ended', () => this.next())
     start(this.container, this.player, width, height)
   }
   getAsset() {
