@@ -7,12 +7,7 @@ const unstarted = -1
 
 export default class TV extends Component {
   state = {
-    assetIndex: unstarted,
-    assets: [
-      'video-1.mp4'
-    , 'video-2.mp4'
-    , 'video-3.mp4'
-    ]
+    assetIndex: unstarted
   }
   constructor(props){
     super(props)
@@ -27,8 +22,12 @@ export default class TV extends Component {
     this.player.addEventListener('ended', () => this.next())
     start(this.container, this.player, width, height)
   }
+  componentWillUnmount() {
+    this.player.removeEventListener('ended', () => this.next())
+  }
   getAsset() {
-    const {assets, assetIndex} = this.state
+    const { assets } = this.props
+    const { assetIndex } = this.state
     const nextAssetIndex = assetIndex + 1
     const assetSrc = `${process.env.PUBLIC_URL}/${assets[nextAssetIndex % assets.length]}`
     return {assetSrc, assetIndex: nextAssetIndex}

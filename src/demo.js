@@ -82,7 +82,6 @@ const start = (container, video) => {
   const windowHalfX = containerWidth / 2
   const windowHalfY = containerHeight / 2
 
-  console.log(containerWidth, containerHeight, windowHalfX, windowHalfY)
   const {renderer, composer, camera} = init(container, video, containerWidth, containerHeight, windowHalfX, windowHalfY)
   window.addEventListener('resize', () => onWindowResize(renderer, composer, camera, container.innerWidth, container.innerHeight))
 

@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import { Grid, PlaceholderImageItem } from './grid'
+import { Grid, PlaceholderItem,  tvGifs, greyGifFactory} from './grid'
 import { TV } from './tv'
-
 
 class App extends Component {
   componentWillMount() {
     this.getDimensions()
   }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.getDimensions.bind(this))
+  }
   componentDidMount() {
-    window.addEventListener('resize', this.getDimensions.bind(this), true)
+    window.addEventListener('resize', this.getDimensions.bind(this))
   }
   getDimensions() {
     this.setState({
@@ -19,24 +21,24 @@ class App extends Component {
   render() {
     return (
       <Grid>
-        <PlaceholderImageItem {...this.state}/>
-        <TV {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
-        <PlaceholderImageItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <TV assets={tvGifs} {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
+        <PlaceholderItem {...this.state}/>
       </Grid>
     )
   }

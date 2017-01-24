@@ -3,8 +3,17 @@
   flex-flow: row wrap;
   justify-content: space-around;
 }
+
 .grid-item {
-  width: 32%;
+  box-sizing: border-box;
+  margin: 0.75em 0 0.75em 0;
   position: relative;
-  margin-top: 1em;
+  width: 32%;
+  overflow: hidden;
+}
+
+.grid-item video {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }

@@ -1,2 +1,3 @@
 export {default as Grid} from './Grid'
-export {default as PlaceholderImageItem} from './PlaceholderImageItem'
+export {default as PlaceholderItem} from './PlaceholderItem'
+export * from './fixtures'
