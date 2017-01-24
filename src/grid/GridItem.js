@@ -2,8 +2,8 @@ import React from 'react'
 import { greyGifFactory } from './fixtures'
 import './ml.css'
 
-export const GridItem = ({children}) => (
-  <div className={"ml-pnl"}>
+export const GridItem = ({className, children}) => (
+  <div className={`ml-pnl ${className}`}>
     {children}
   </div>
 )

@@ -4,13 +4,13 @@
   z-index: 1;
   position: relative;
   overflow: hidden;
-  min-width: 100%;
+  min-width: 200%;
 }
 
 .tv:before {
   content: "";
   display: block;
-  padding-top: 100%;
+  padding-top: 50%;
   float: left;
 }
 

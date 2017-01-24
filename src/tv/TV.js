@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { GridItem } from '../grid'
 import './tv.css'
 import start from '../demo'
 
@@ -17,9 +19,10 @@ export default class TV extends Component {
     this.next()
   }
   componentDidMount() {
-    const { clientWidth } = this.container
+    const container = ReactDOM.findDOMNode(this.container)
+    const { clientWidth } = container
     this.player.addEventListener('ended', () => this.next())
-    start(this.container, this.player, clientWidth, clientWidth)
+    start(container, this.player, clientWidth *2, clientWidth)
   }
   componentWillUnmount() {
     this.player.removeEventListener('ended', () => this.next())
@@ -38,14 +41,14 @@ export default class TV extends Component {
     const { assetSrc } = this.state
 
     return (
-      <div ref={el => this.container = el}
+      <GridItem ref={comp => this.container = comp}
            className={'tv'}>
         <video ref={el => this.player = el}
                autoPlay
                style={{display}}
                src={assetSrc}>
         </video>
-      </div>
+      </GridItem>
     )
   }
 }

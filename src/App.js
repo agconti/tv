@@ -32,6 +32,10 @@ class App extends Component {
         <GreyGifGridItem />
         <GreyGifGridItem />
         <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
       </Grid>
     )
   }
