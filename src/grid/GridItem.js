@@ -2,19 +2,19 @@ import React from 'react'
 import { greyGifFactory } from './fixtures'
 import './ml.css'
 
-export const GridItem = ({className, children}) => (
+export const GridItem = ({className='', children}) => (
   <div className={`ml-pnl ${className}`}>
     {children}
   </div>
 )
 
 const GreyGif = () => (
-  <video className={"ml-pnl__cntnt"}
+  <video className={'ml-pnl__cntnt'}
            autoPlay
            loop
            preload
            src={greyGifFactory()}
-           alt={"Placeholder"} />
+           alt={'Placeholder'} />
 )
 
 export const GreyGifGridItem = () => (

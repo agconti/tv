@@ -12,6 +12,7 @@ import { EffectComposer } from './EffectComposer'
 const antialias = false
 
 function init(container, video, containerWidth, containerHeight, containerHalfWidth, containerHalfHeight) {
+  console.log(container, video, containerWidth, containerHeight, containerHalfWidth, containerHalfHeight)
   const clock = new THREE.Clock()
   const scene = new THREE.Scene()
 
@@ -81,7 +82,7 @@ const start = (container, video, width, height) => {
   const containerHalfHeight = height / 2
 
   const {renderer, composer, camera} = init(container, video, width, height, containerHalfWidth, containerHalfHeight)
-  window.addEventListener('resize', () => onWindowResize(renderer, composer, camera, container.innerWidth, container.innerHeight))
+  window.addEventListener('resize', () => onWindowResize(renderer, composer, camera, container.clientWidth, container.clientHeight))
 
   ;(function animloop(){
     requestAnimationFrame(animloop)

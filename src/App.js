@@ -25,7 +25,7 @@ class App extends Component {
         <GreyGifGridItem />
         <GreyGifGridItem />
         <GridItem>
-          <TV assets={tvGifs} {...this.state}/>
+          <TV assets={tvGifs}/>
         </GridItem>
         <GreyGifGridItem />
         <GreyGifGridItem />
