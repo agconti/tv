@@ -5,14 +5,13 @@ import FilmPass from './FilmPass'
 import TexturePass from './TexturePass'
 import VignetteShader from './VignetteShader'
 import SepiaShader from './SepiaShader'
-import ChromaticalShader from './ChromaticalShader'
+import TVShader from './TVShader'
 import { EffectComposer } from './EffectComposer'
 
 
 const antialias = false
 
 function init(container, video, containerWidth, containerHeight, containerHalfWidth, containerHalfHeight) {
-  console.log(container, video, containerWidth, containerHeight, containerHalfWidth, containerHalfHeight)
   const clock = new THREE.Clock()
   const scene = new THREE.Scene()
 
@@ -39,30 +38,20 @@ function init(container, video, containerWidth, containerHeight, containerHalfWi
 
 
   // postprocessing
-  var renderModel = new RenderPass(scene, camera)
-  var effectChromatical = new ShaderPass(ChromaticalShader)
-  var effectSepia = new ShaderPass(SepiaShader)
-  var effectFilm = new FilmPass(0.25, 0.15, 4096, false)
-  var effectVignette = new ShaderPass(VignetteShader)
-  effectChromatical.uniforms.time.value += clock.getDelta()
-  effectSepia.uniforms[ "amount" ].value = 0.4
-  effectVignette.uniforms[ "offset" ].value = 0.95
-  effectVignette.uniforms[ "darkness" ].value = 0.9
+  const renderModel = new RenderPass(scene, camera)
+  const composer = new EffectComposer(renderer)
+  const renderScene = new TexturePass(texture)
+  const effectTV = new ShaderPass(TVShader)
 
-  // effectFilm.renderToScreen = true
-  effectVignette.renderToScreen = true
-  // effectChromatical.renderToScreen = true
+  renderScene.uniforms.tDiffuse.value = texture
+  effectTV.uniforms.time.value += clock.getDelta()
+  effectTV.uniforms.resolution.value = new THREE.Vector2(containerWidth, containerHeight)
+  effectTV.renderToScreen = true
 
-  const composer = new EffectComposer( renderer )
-  const renderScene = new TexturePass( texture )
-  composer.addPass( renderModel )
-  composer.addPass( renderScene )
-  // composer.addPass( effectChromatical )
-  composer.addPass( effectSepia )
-  composer.addPass( effectFilm )
-  composer.addPass( effectVignette )
+  composer.addPass(renderModel)
+  composer.addPass(renderScene)
+  composer.addPass(effectTV)
 
-  renderScene.uniforms[ "tDiffuse" ].value = texture
   return {renderer, composer, camera}
 }
 

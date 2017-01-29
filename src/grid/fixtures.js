@@ -16,7 +16,7 @@ function makeIterator(array){
     return { next }
 }
 
-const greyGifsIterator = makeIterator([
+export const greyGifs = [
   'http://i.giphy.com/1OvYypecncSzu.mp4'
 , 'http://i.giphy.com/YGSpb7oIhENa.mp4'
 , 'https://media.giphy.com/media/p86I8qRhEc132/giphy.mp4'
@@ -35,6 +35,7 @@ const greyGifsIterator = makeIterator([
 , 'http://i.giphy.com/ToMjGpn2MqyMOpnZJGU.mp4'
 , 'http://i.giphy.com/gRN7QxcEheT04.mp4'
 , 'http://i.giphy.com/o02p0pTVbPl1S.mp4'
-])
+]
+const greyGifsIterator = makeIterator(greyGifs)
 
 export const greyGifFactory = () => greyGifsIterator.next()

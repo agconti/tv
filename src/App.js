@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, GridItem, GreyGifGridItem,  tvGifs, greyGifFactory} from './grid'
+import { Grid, GridItem, GreyGifGridItem,  greyGifs, greyGifFactory} from './grid'
 import { TV } from './tv'
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
         <GreyGifGridItem />
         <GreyGifGridItem />
         <GridItem>
-          <TV assets={tvGifs}/>
+          <TV assets={greyGifs}/>
         </GridItem>
         <GreyGifGridItem />
         <GreyGifGridItem />

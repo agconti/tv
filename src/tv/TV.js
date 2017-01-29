@@ -28,7 +28,7 @@ export default class TV extends Component {
     const { assets } = this.props
     const { assetIndex } = this.state
     const nextAssetIndex = assetIndex + 1
-    const assetSrc = `${process.env.PUBLIC_URL}/${assets[nextAssetIndex % assets.length]}`
+    const assetSrc = assets[nextAssetIndex % assets.length]
     return {assetSrc, assetIndex: nextAssetIndex}
   }
   next() {
@@ -42,6 +42,7 @@ export default class TV extends Component {
            className={'tv'}>
         <video ref={el => this.player = el}
                autoPlay
+               crossOrigin={'anonymous'}
                style={{display}}
                src={assetSrc}>
         </video>
