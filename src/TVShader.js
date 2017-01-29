@@ -32,11 +32,9 @@ uniform vec2 resolution;
 varying vec2 vUv;
 
 void main() {
-
 	vUv = uv;
 	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-
- }
+}
 `
 const fragmentShader = `
 /*
@@ -75,7 +73,7 @@ varying vec2 vUv;
 
 void main() {
 	// distance from center of image, used to adjust blur
-  vec2 uv = gl_FragCoord.xy / resolution.xy;
+	vec2 uv = gl_FragCoord.xy / resolution.xy;
 	float d = length(uv - vec2(0.5,0.5));
 
 	// blur amount
@@ -88,10 +86,10 @@ void main() {
 	blur *= d;
 
 	// final color
-  vec3 col;
-  col.r = texture2D(tDiffuse, vec2(uv.x + blur, uv.y)).r;
-  col.g = texture2D(tDiffuse, uv ).g;
-  col.b = texture2D(tDiffuse, vec2(uv.x - blur, uv.y)).b;
+	vec3 col;
+	col.r = texture2D(tDiffuse, vec2(uv.x + blur, uv.y)).r;
+	col.g = texture2D(tDiffuse, uv ).g;
+	col.b = texture2D(tDiffuse, vec2(uv.x - blur, uv.y)).b;
 
 	// scanline
 	float scanline = sin(uv.y * 800.0) * 0.04;
