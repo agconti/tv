@@ -68,6 +68,8 @@ Based on Justin Saunders ChromaticalShader. https://www.shadertoy.com/view/XdXXD
 uniform float time;
 uniform sampler2D tDiffuse;
 uniform vec2 resolution;
+uniform float vignetteDarkness;
+uniform float vignetteOffset;
 
 varying vec2 vUv;
 
@@ -95,24 +97,10 @@ void main() {
 	float scanline = sin(uv.y * 800.0) * 0.04;
 	col -= scanline;
 
-	// vignette
-	col *= 1.0 - d * 0.5;
-  gl_FragColor = vec4(col, 1.0);
-
-	// // Eskil's vignette
-	//
-	// "vec4 texel = texture2D( tDiffuse, vUv );",
-	// "vec2 uv = ( vUv - vec2( 0.5 ) ) * vec2( offset );",
-	// "gl_FragColor = vec4( mix( texel.rgb, vec3( 1.0 - darkness ), dot( uv, uv ) ), texel.a );",
-	//
-	// /*
-	// // alternative version from glfx.js
-	// // this one makes more "dusty" look (as opposed to "burned")
-	//
-	// "vec4 color = texture2D( tDiffuse, vUv );",
-	// "float dist = distance( vUv, vec2( 0.5 ) );",
-	// "color.rgb *= smoothstep( 0.8, offset * 0.799, dist *( darkness + offset ) );",
-	// "gl_FragColor = color;",
+	// Eskil's vignette
+	vec4 color = vec4(col, 1.0);
+	vec2 oUv = ( vUv - vec2( 0.5 ) ) * vec2( vignetteOffset );
+	gl_FragColor = vec4( mix( color.rgb, vec3( 1.0 - vignetteDarkness ), dot( oUv, oUv ) ), color.a );
 }
 `
 
@@ -120,6 +108,8 @@ const uniforms = {
   time: { value: 0.0 }
 , tDiffuse: { value: null }
 , resolution: { value: THREE.Vector2() }
+, vignetteOffset: { value: 0.7 }
+, vignetteDarkness: { value: 0.7 }
 }
 const TVShader = {
 	uniforms
