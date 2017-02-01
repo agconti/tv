@@ -42,9 +42,10 @@ function init(container, video, containerWidth, containerHeight, containerHalfWi
   const composer = new EffectComposer(renderer)
   const renderScene = new TexturePass(texture)
   const effectTV = new ShaderPass(TVShader)
-
+  const timePassed = () => clock.getDelta()
+  console.log(timePassed())
   renderScene.uniforms.tDiffuse.value = texture
-  effectTV.uniforms.time.value += clock.getDelta()
+  effectTV.uniforms.time.value += timePassed()
   effectTV.uniforms.resolution.value = new THREE.Vector2(containerWidth, containerHeight)
   effectTV.renderToScreen = true
 
@@ -84,6 +85,7 @@ const start = (container, video, width, height) => {
     // }
     renderer.clear()
     composer.render()
+    effectTV.uniforms.time.value += timePassed()
   })()
 }
 
