@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { GridItem } from '../grid'
 import './tv.css'
-import start from '../demo'
+import TVScreen from '../TVScreen'
 
 const display = 'none'
 const unstarted = -1
@@ -19,7 +19,7 @@ export default class TV extends Component {
   }
   componentDidMount() {
     this.player.addEventListener('ended', () => this.next())
-    start(this.container, this.player, this.container.clientWidth, this.container.clientHeight)
+    this.screen = new TVScreen(this.container, this.player, this.container.clientWidth, this.container.clientHeight)
   }
   componentWillUnmount() {
     this.player.removeEventListener('ended', () => this.next())
