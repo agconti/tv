@@ -27,13 +27,13 @@ void main() {
 	float d = length(uv - vec2(0.5,0.5));
 
 	// blur amount
-	float blurAmount = 0.125;
+	float blurAmount = 0.05;
 	float blurPositiveRangeModifer = 0.5;
 	float animationCurveTwoActionsPerSecond = (1.0 + sin(time * 10.0)) * blurPositiveRangeModifer;
 	float animationCurveThreeActionsPerSecond = (1.0 + sin(time * 25.0)) * blurPositiveRangeModifer;
 	float jaggedAnimationCurve = animationCurveTwoActionsPerSecond * animationCurveTwoActionsPerSecond;
-	// float blur = pow(jaggedAnimationCurve, 3.0);
-  float blur = jaggedAnimationCurve * blurAmount;
+	float blur = pow(jaggedAnimationCurve, 3.0);
+  blur *= blurAmount;
 	// reduce blur towards center
 	blur *= d;
 
