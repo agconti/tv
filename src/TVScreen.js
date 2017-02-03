@@ -23,6 +23,7 @@ export default class TVScreen {
     // initalize scene
     this.texture = this.getVideoTexture(video)
     this.renderer = this.getRenderer(this.antialias, containerWidth, containerHeight)
+    this.rendererDomElement = this.renderer.domElement
     this.tvGemometry = new THREE.PlaneBufferGeometry(containerWidth, containerHeight)
     this.tvMaterial = new THREE.MeshBasicMaterial({map: this.texture})
     this.tvMesh = new THREE.Mesh(this.tvGemometry, this.tvMaterial)
@@ -66,7 +67,6 @@ export default class TVScreen {
    renderer.setPixelRatio(window.devicePixelRatio)
    renderer.setSize(containerWidth, containerHeight)
    renderer.autoClear = false
-   this.rendererDomElement = this.renderer.domElement
    return renderer
   }
 
@@ -75,8 +75,8 @@ export default class TVScreen {
   }
 
   onWindowResize() {
-    const containerWidth = this.container.clientWidth
-    const containerHeight = this.container.clientHeight
+    const containerWidth = this.rendererDomElement.clientWidth
+    const containerHeight = this.rendererDomElement.clientHeight
 
     this.camera.aspect = containerWidth / containerHeight
     this.camera.updateProjectionMatrix()
@@ -90,13 +90,6 @@ export default class TVScreen {
 
     ;(function animationLoop() {
       requestAnimationFrame(animationLoop)
-
-      // if (video.readyState === video.HAVE_ENOUGH_DATA) {
-      //   videoImageContext.drawImage(video, 0, 0 )
-      //   if ( videoTexture ) {
-      //     videoTexture.needsUpdate = true;
-      //   }
-      // }
       renderer.clear()
       composer.render()
       effectTV.uniforms.time.value += getTimePassed()
