@@ -28,6 +28,7 @@ void main() {
 	float d = length(uv - vec2(0.5,0.5));
 
 	// blur
+	vec3 col;
 	float blurDisplacementAmount = 0.025;
 	float blur01RangeClamper = 0.5;
 	float animationCurveTwoActionsPerSecond = (1.0 + fract(sin(time * 10.0))) * blur01RangeClamper;
@@ -38,15 +39,15 @@ void main() {
   blur *= blurDisplacementAmount;
 	// reduce blur towards center
 	blur *= d;
-
-	// final color
-	vec3 col;
 	col.r = texture2D(tDiffuse, vec2(uv.x + blur, uv.y)).r;
 	col.g = texture2D(tDiffuse, uv ).g;
 	col.b = texture2D(tDiffuse, vec2(uv.x - blur, uv.y)).b;
 
 	// scanline
-	float scanline = sin(uv.y * 800.0) * 0.125;
+	float scanlineIntesnsity = 0.125;
+	float scanlineCount = 800.0;
+	float scanlineYDelta = sin(time / 200.0);
+	float scanline = sin((uv.y - scanlineYDelta) * scanlineCount) * scanlineIntesnsity;
 	col -= scanline;
 
 	// Eskil's vignette
