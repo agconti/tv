@@ -24,16 +24,18 @@ varying vec2 vUv;
 void main() {
 	// distance from center of image, used to adjust blur
 	vec2 uv = gl_FragCoord.xy / resolution.xy;
+	// could make this exponential fall off?
 	float d = length(uv - vec2(0.5,0.5));
 
-	// blur amount
-	float blurAmount = 0.05;
-	float blurPositiveRangeModifer = 0.5;
-	float animationCurveTwoActionsPerSecond = (1.0 + sin(time * 10.0)) * blurPositiveRangeModifer;
-	float animationCurveThreeActionsPerSecond = (1.0 + sin(time * 25.0)) * blurPositiveRangeModifer;
+	// blur
+	float blurDisplacementAmount = 0.025;
+	float blur01RangeClamper = 0.5;
+	float animationCurveTwoActionsPerSecond = (1.0 + fract(sin(time * 10.0))) * blur01RangeClamper;
+	float animationCurveThreeActionsPerSecond = (1.0 + sin(time * 25.0)) * blur01RangeClamper;
 	float jaggedAnimationCurve = animationCurveTwoActionsPerSecond * animationCurveTwoActionsPerSecond;
+	// Increases peak sharpness
 	float blur = pow(jaggedAnimationCurve, 3.0);
-  blur *= blurAmount;
+  blur *= blurDisplacementAmount;
 	// reduce blur towards center
 	blur *= d;
 
