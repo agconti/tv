@@ -50,7 +50,7 @@ export default class TVScreen {
 
     container.appendChild(this.rendererDomElement)
     this.animate()
-    window.addEventListener('resize', this.onWindowResize)
+    window.addEventListener('resize', this.onWindowResize.bind(this))
   }
 
   getVideoTexture(video) {

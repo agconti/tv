@@ -46,7 +46,7 @@ void main() {
 	col.b = texture2D(tDiffuse, vec2(uv.x - blur, uv.y)).b;
 
 	// scanline
-	float scanline = sin(uv.y * 800.0) * 0.04;
+	float scanline = sin(uv.y * 800.0) * 0.125;
 	col -= scanline;
 
 	// Eskil's vignette
