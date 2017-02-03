@@ -47,7 +47,7 @@ export default class TVScreen {
     this.composer.addPass(renderScene)
     this.composer.addPass(this.effectTV)
 
-    container.appendChild(this.renderer.domElement)
+    container.appendChild(this.rendererDomElement)
     this.animate()
     window.addEventListener('resize', this.onWindowResize)
   }
@@ -66,7 +66,7 @@ export default class TVScreen {
    renderer.setPixelRatio(window.devicePixelRatio)
    renderer.setSize(containerWidth, containerHeight)
    renderer.autoClear = false
-
+   this.rendererDomElement = this.renderer.domElement
    return renderer
   }
 
