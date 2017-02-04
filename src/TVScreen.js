@@ -75,13 +75,12 @@ export default class TVScreen {
   }
 
   onWindowResize() {
-    const containerWidth = this.rendererDomElement.clientWidth
-    const containerHeight = this.rendererDomElement.clientHeight
+    const {width, height} = this.rendererDomElement
 
-    this.camera.aspect = containerWidth / containerHeight
+    this.camera.aspect = width / height
     this.camera.updateProjectionMatrix()
 
-    this.renderer.setSize(containerWidth, containerHeight)
+    this.renderer.setSize(width, height)
     this.composer.reset()
   }
   animate() {
