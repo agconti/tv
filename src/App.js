@@ -24,9 +24,20 @@ class App extends Component {
         <GreyGifGridItem />
         <GreyGifGridItem />
         <GreyGifGridItem />
-        <GridItem>
-          <TV assets={greyGifs}/>
-        </GridItem>
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
+        <GreyGifGridItem />
         <GreyGifGridItem />
         <GreyGifGridItem />
         <GreyGifGridItem />

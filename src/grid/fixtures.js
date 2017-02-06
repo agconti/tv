@@ -1,9 +1,3 @@
-export const tvGifs = [
-  'video-1.mp4'
-, 'video-2.mp4'
-, 'video-3.mp4'
-]
-
 function makeIterator(array){
     let nextIndex = 0;
     const next = () => {

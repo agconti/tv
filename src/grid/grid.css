@@ -5,6 +5,12 @@
   align-content: space-around;
 }
 
+.grid-col {
+  width: 33%;
+  display: inline-block;
+  float: left;
+}
+
 .grid-item {
   box-sizing: border-box;
   margin: 0.75em 0 0.75em 0;

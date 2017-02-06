@@ -93,6 +93,5 @@ export default class TVScreen {
       composer.render()
       effectTV.uniforms.time.value += getTimePassed()
     })()
-
   }
 }

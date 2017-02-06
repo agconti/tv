@@ -14,12 +14,12 @@
 }
 @media (min-width: 768px) {
   .ml {
-    column-count: 3;
+    column-count: 2;
   }
 }
 @media (min-width: 1200px) {
   .ml {
-    column-count: 4;
+    column-count: 2;
   }
 }
 .ml-pnl {
