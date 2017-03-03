@@ -15,7 +15,6 @@ export default class TVScreen {
     const containerHeight = initalHeight
     const containerHalfWidth = initialWidth / 2
     const containerHalfHeight = initalHeight / 2
-    console.log(containerWidth, containerHalfWidth, containerHeight, containerHalfHeight)
     this.antialias = false
     this.clock = new THREE.Clock()
     this.scene = new THREE.Scene()
@@ -50,7 +49,7 @@ export default class TVScreen {
 
     container.appendChild(this.rendererDomElement)
     this.animate()
-    window.addEventListener('resize', this.onWindowResize.bind(this))
+    window.addEventListener('resize', this.onWindowResize.bind(this), false)
   }
 
   getVideoTexture(video) {
@@ -73,13 +72,20 @@ export default class TVScreen {
   getTimePassed() {
     return this.clock.getDelta()
   }
-
-  onWindowResize() {
+  resize() {
     const {clientWidth, clientHeight} = this.rendererDomElement
     this.camera.aspect = clientWidth / clientHeight
     this.renderer.setSize(clientWidth, clientHeight)
     this.camera.updateProjectionMatrix()
     this.composer.reset()
+  }
+  onWindowResize() {
+    console.log('running')
+    const resize = this.resize.bind(this)
+    const debounceThreshold = 250
+
+    clearTimeout(this.resizeTimeout)
+    this.resizeTimeout = setTimeout(resize, debounceThreshold)
   }
   animate() {
     const { renderer, composer, effectTV} = this
