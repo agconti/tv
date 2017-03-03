@@ -10,9 +10,22 @@
 }
 
 .grid-col {
-  width: 33%;
+  width: 100%;
   display: inline-block;
-  float: left;
+  flex: 0 1 auto;
+}
+
+.grid-col--hero {
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .grid-col {
+    width: 33%;
+  }
+  .grid-col--hero {
+    order: 0;
+  }
 }
 
 .grid-item {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, GridItem, GreyGifGridItem,  greyGifs, greyGifFactory} from './grid'
-import { TV } from './tv'
+import { Grid, GreyGifGridItem } from './grid'
 
 class App extends Component {
   componentWillMount() {
