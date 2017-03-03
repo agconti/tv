@@ -14,18 +14,24 @@ const Grid = ({children}) => {
 
   return (
     <section className={"grid"}>
-      <div className={"ml grid-col"}>{left}</div>
-      <div className={"ml grid-col"}>
-        <div>
-          <GridItem>
-            <TV assets={greyGifs}/>
-          </GridItem>
-          <div className={'ml'}>
-            {middle}
-          </div>
+      <div className={"grid-col"}>
+        <div className={"ml"}>
+          {left}
         </div>
       </div>
-      <div className={"ml grid-col"}>{right}</div>
+      <div className={"grid-col"}>
+        <div className="grid-item--hero">
+          <TV assets={greyGifs} />
+        </div>
+        <div className={'ml'}>
+          {middle}
+        </div>
+      </div>
+      <div className={"grid-col"}>
+        <div className={"ml"}>
+          {right}
+        </div>
+      </div>
     </section>
   )
 }

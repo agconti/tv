@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .grid {
   display: flex;
   flex-flow: row wrap;
@@ -24,4 +28,9 @@
   max-width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.grid-item--hero {
+  padding: 15px;
+  width: 100%;
 }

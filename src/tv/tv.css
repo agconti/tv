@@ -4,7 +4,6 @@
   z-index: 1;
   position: relative;
   overflow: hidden;
-  min-width: 200%;
 }
 
 .tv:before {
@@ -17,5 +16,8 @@
 .tv canvas {
   position: absolute;
   z-index: 0;
-  /*width: 100%;*/
+}
+
+.tv video {
+    display: none;
 }

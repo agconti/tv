@@ -3,7 +3,6 @@ import { GridItem } from '../grid'
 import './tv.css'
 import TVScreen from '../TVScreen'
 
-const display = 'none'
 const unstarted = -1
 
 export default class TV extends Component {
@@ -43,7 +42,6 @@ export default class TV extends Component {
         <video ref={el => this.player = el}
                autoPlay
                crossOrigin={'anonymous'}
-               style={{display}}
                src={assetSrc}>
         </video>
       </div>
