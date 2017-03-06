@@ -14,10 +14,10 @@
 }
 @media (min-width: 768px) {
   .ml {
-    column-count: 2;
+    column-count: 1;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .ml {
     column-count: 2;
   }
