@@ -1,10 +1,7 @@
 import * as THREE from 'three'
 import RenderPass from './RenderPass'
 import ShaderPass from './ShaderPass'
-import FilmPass from './FilmPass'
 import TexturePass from './TexturePass'
-import VignetteShader from './VignetteShader'
-import SepiaShader from './SepiaShader'
 import TVShader from './TVShader'
 import { EffectComposer } from './EffectComposer'
 
@@ -18,6 +15,7 @@ export default class TVScreen {
     this.antialias = false
     this.clock = new THREE.Clock()
     this.scene = new THREE.Scene()
+    this.container =  container
 
     // initalize scene
     this.texture = this.getVideoTexture(video)
@@ -73,14 +71,17 @@ export default class TVScreen {
     return this.clock.getDelta()
   }
   resize() {
-    const {clientWidth, clientHeight} = this.rendererDomElement
+    const {clientWidth, clientHeight} = this.container
+    console.log('running')
+    console.log(this.container)
+    console.log(clientWidth, clientHeight, clientWidth / clientHeight)
+    this.renderer.setPixelRatio(1)
     this.camera.aspect = clientWidth / clientHeight
     this.renderer.setSize(clientWidth, clientHeight)
     this.camera.updateProjectionMatrix()
     this.composer.reset()
   }
   onWindowResize() {
-    console.log('running')
     const resize = this.resize.bind(this)
     const debounceThreshold = 250
 
@@ -88,7 +89,7 @@ export default class TVScreen {
     this.resizeTimeout = setTimeout(resize, debounceThreshold)
   }
   animate() {
-    const { renderer, composer, effectTV} = this
+    const { renderer, composer, effectTV } = this
     const getTimePassed = () => this.getTimePassed()
 
     ;(function animationLoop() {
