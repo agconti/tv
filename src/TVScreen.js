@@ -72,9 +72,6 @@ export default class TVScreen {
   }
   resize() {
     const {clientWidth, clientHeight} = this.container
-    console.log('running')
-    console.log(this.container)
-    console.log(clientWidth, clientHeight, clientWidth / clientHeight)
     this.renderer.setPixelRatio(1)
     this.camera.aspect = clientWidth / clientHeight
     this.renderer.setSize(clientWidth, clientHeight)
