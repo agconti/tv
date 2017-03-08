@@ -3,18 +3,17 @@ import { greyGifFactory } from './fixtures'
 import './ml.css'
 
 export const GridItem = ({className='', children}) => (
-  <div className={`ml-pnl ${className}`}>
+  <div className={`ml-item grid-item ${className}`}>
     {children}
   </div>
 )
 
 const GreyGif = () => (
-  <video className={'ml-pnl__cntnt'}
-           autoPlay
-           loop
-           preload
-           src={greyGifFactory()}
-           alt={'Placeholder'} />
+  <video  autoPlay
+          loop
+          preload
+          src={greyGifFactory()}
+          alt={'Placeholder'} />
 )
 
 export const GreyGifGridItem = () => (

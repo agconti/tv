@@ -12,10 +12,11 @@ export default class TVScreen {
     const containerHeight = initalHeight
     const containerHalfWidth = initialWidth / 2
     const containerHalfHeight = initalHeight / 2
-    this.antialias = false
+    this.antialias = true
     this.clock = new THREE.Clock()
     this.scene = new THREE.Scene()
     this.container =  container
+    this.devicePixelRatio = window.devicePixelRatio ? window.devicePixelRatio: 1
 
     // initalize scene
     this.texture = this.getVideoTexture(video)
@@ -61,7 +62,7 @@ export default class TVScreen {
 
   getRenderer(antialias, containerWidth, containerHeight) {
    const renderer = new THREE.WebGLRenderer({antialias})
-   renderer.setPixelRatio(1)
+   renderer.setPixelRatio(window.devicePixelRatio)
    renderer.setSize(containerWidth, containerHeight)
    renderer.autoClear = false
    return renderer
@@ -70,12 +71,12 @@ export default class TVScreen {
   getTimePassed() {
     return this.clock.getDelta()
   }
+
   resize() {
     const {clientWidth, clientHeight} = this.container
-    this.renderer.setPixelRatio(1)
     this.camera.aspect = clientWidth / clientHeight
-    this.renderer.setSize(clientWidth, clientHeight)
     this.camera.updateProjectionMatrix()
+    this.renderer.setSize(clientWidth, clientHeight)
     this.composer.reset()
   }
   onWindowResize() {

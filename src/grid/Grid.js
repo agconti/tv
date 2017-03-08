@@ -20,7 +20,7 @@ const Grid = ({children}) => {
         </div>
       </div>
       <div className={"grid-col grid-col--hero"}>
-        <div className="grid-item--hero">
+        <div className="grid-item grid-item--hero">
           <TV assets={greyGifs} />
         </div>
         <div className={'ml'}>
