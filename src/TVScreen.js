@@ -62,7 +62,7 @@ export default class TVScreen {
 
   getRenderer(antialias, containerWidth, containerHeight) {
    const renderer = new THREE.WebGLRenderer({antialias})
-   renderer.setPixelRatio(window.devicePixelRatio)
+   renderer.setPixelRatio(this.devicePixelRatio)
    renderer.setSize(containerWidth, containerHeight)
    renderer.autoClear = false
    return renderer

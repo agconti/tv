@@ -1,10 +1,9 @@
 /*
-/* A flexbox based masony layout
+/* A css based masony layout
 /* Inspired by https://medium.com/@_jh3y/how-to-pure-css-masonry-layouts-a8ede07ba31a#.qwnyovrjm
 /* */
 
 .ml {
-  justify-content: space-between;
   box-sizing: border-box;
   column-count: 1;
   column-gap: 0;
