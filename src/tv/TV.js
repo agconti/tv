@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { GridItem } from '../grid'
+import TVScreen from './TVScreen'
 import './tv.css'
-import TVScreen from '../TVScreen'
 
 const unstarted = -1
 

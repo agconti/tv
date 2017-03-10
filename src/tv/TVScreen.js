@@ -1,9 +1,9 @@
 import * as THREE from 'three'
-import RenderPass from './RenderPass'
-import ShaderPass from './ShaderPass'
-import TexturePass from './TexturePass'
+import RenderPass from './post_processing/RenderPass'
+import ShaderPass from './post_processing/ShaderPass'
+import TexturePass from './post_processing/TexturePass'
+import { EffectComposer } from './post_processing/EffectComposer'
 import TVShader from './TVShader'
-import { EffectComposer } from './EffectComposer'
 
 
 export default class TVScreen {
@@ -27,7 +27,8 @@ export default class TVScreen {
     this.tvMesh = new THREE.Mesh(this.tvGemometry, this.tvMaterial)
     this.scene.add(this.tvMesh)
 
-    this.camera = new THREE.OrthographicCamera(-containerHalfWidth, containerHalfWidth, containerHalfHeight, -containerHalfHeight, 1, 10000 )
+    this.camera = new THREE.OrthographicCamera(-containerHalfWidth, containerHalfWidth,
+                                               containerHalfHeight, -containerHalfHeight, 1, 10000)
     this.camera.position.z = 1
     this.camera.lookAt(this.tvMesh.position)
 
@@ -74,7 +75,10 @@ export default class TVScreen {
 
   resize() {
     const {clientWidth, clientHeight} = this.container
-    this.camera.aspect = clientWidth / clientHeight
+    this.camera.left = clientWidth / - 2
+    this.camera.right =  clientWidth / 2
+    this.camera.top = clientHeight / 2
+    this.camera.bottom = clientHeight / - 2
     this.camera.updateProjectionMatrix()
     this.renderer.setSize(clientWidth, clientHeight)
     this.composer.reset()

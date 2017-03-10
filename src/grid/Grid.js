@@ -1,5 +1,4 @@
 import React from 'react'
-import {GridItem} from './GridItem'
 import {greyGifs} from './fixtures'
 import TV from '../tv/TV'
 import './ml.css'
