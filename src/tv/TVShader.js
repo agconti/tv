@@ -9,7 +9,7 @@ varying vec2 vUv;
 
 void main() {
 	vUv = uv;
-	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+	gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
 `
 const fragmentShader = `
@@ -29,10 +29,10 @@ void main() {
 
 	// blur
 	vec3 col;
-	float blurDisplacementAmount = 0.025;
+	float blurDisplacementAmount = 0.04;
 	float blur01RangeClamper = 0.5;
 	float animationCurveTwoActionsPerSecond = (1.0 + fract(sin(time * 10.0))) * blur01RangeClamper;
-	float animationCurveThreeActionsPerSecond = (1.0 + sin(time * 25.0)) * blur01RangeClamper;
+	float animationCurveThreeActionsPerSecond = (1.0 + sin(time * 12.0)) * blur01RangeClamper;
 	float jaggedAnimationCurve = animationCurveTwoActionsPerSecond * animationCurveTwoActionsPerSecond;
 	// Increases peak sharpness
 	float blur = pow(jaggedAnimationCurve, 3.0);
@@ -40,20 +40,19 @@ void main() {
 	// reduce blur towards center
 	blur *= d;
 	col.r = texture2D(tDiffuse, vec2(uv.x + blur, uv.y)).r;
-	col.g = texture2D(tDiffuse, uv ).g;
+	col.g = texture2D(tDiffuse, uv).g;
 	col.b = texture2D(tDiffuse, vec2(uv.x - blur, uv.y)).b;
 
 	// scanline
 	float scanlineIntesnsity = 0.125;
 	float scanlineCount = 800.0;
-	float scanlineYDelta = sin(time / 200.0);
-	float scanline = sin((uv.y - scanlineYDelta) * scanlineCount) * scanlineIntesnsity;
+	float scanline = sin((uv.y) * scanlineCount) * scanlineIntesnsity;
 	col -= scanline;
 
 	// Eskil's vignette
 	vec4 color = vec4(col, 1.0);
-	vec2 oUv = ( vUv - vec2( 0.5 ) ) * vec2( vignetteOffset );
-	gl_FragColor = vec4( mix( color.rgb, vec3( 1.0 - vignetteDarkness ), dot( oUv, oUv ) ), color.a );
+	vec2 oUv = (vUv - vec2(0.5)) * vec2(vignetteOffset);
+	gl_FragColor = vec4(mix(color.rgb, vec3(1.0 - vignetteDarkness), dot(oUv, oUv)), color.a);
 }
 `
 
