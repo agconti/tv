@@ -40,6 +40,7 @@ export default class TV extends Component {
   }
   render() {
     const { assetSrc } = this.state
+    const src = this.getAssetUrl(assetSrc)
 
     return (
       <div ref={el => this.container = el}
@@ -47,7 +48,7 @@ export default class TV extends Component {
         <video ref={el => this.player = el}
                autoPlay
                crossOrigin={'anonymous'}
-               src={this.getAssetUrl(assetSrc)}></video>
+               src={src}></video>
       </div>
     )
   }
