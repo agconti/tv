@@ -3,7 +3,6 @@ import TVScreen from './TVScreen'
 import './tv.css'
 
 
-
 export default class TV extends Component {
   unstarted = -1
   state = {
@@ -26,15 +25,15 @@ export default class TV extends Component {
   componentWillUnmount() {
     this.player.removeEventListener('ended', () => this.next())
   }
-  getAsset() {
-    const { assets } = this.props
-    const { assetIndex } = this.state
+  getAsset(prevState, props) {
+    const { assets } = props
+    const { assetIndex } = prevState
     const nextAssetIndex = assetIndex + 1
     const assetSrc = assets[nextAssetIndex % assets.length]
     return {assetSrc, assetIndex: nextAssetIndex}
   }
   next() {
-    this.setState(this.getAsset())
+    this.setState(this.getAsset)
   }
   getAssetUrl(resource) {
     return [this.mediaUrl, resource, this.rendition].join('/')
