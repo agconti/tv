@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import TVScreen from './TVScreen'
 import './tv.css'
 
-const unstarted = -1
+
 
 export default class TV extends Component {
+  unstarted = -1
   state = {
-    assetIndex: unstarted
+    assetIndex: this.unstarted
   }
   constructor(props){
     super(props)
