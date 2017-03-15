@@ -9,11 +9,8 @@ export const GridItem = ({className='', children}) => (
 )
 
 const GreyGif = () => (
-  <video  autoPlay
-          loop
-          preload
-          src={greyGifFactory()}
-          alt={'Placeholder'} />
+  <img src={greyGifFactory()}
+       alt={'Placeholder'} />
 )
 
 export const GreyGifGridItem = () => (

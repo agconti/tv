@@ -26,7 +26,7 @@
   position: relative;
 }
 
-.grid-item video {
+.grid-item img {
   max-width: 100%;
   width: 100%;
   height: auto;
