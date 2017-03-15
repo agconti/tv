@@ -8,10 +8,14 @@ export const GridItem = ({className='', children}) => (
   </div>
 )
 
-const GreyGif = () => (
-  <img src={greyGifFactory()}
-       alt={'Placeholder'} />
-)
+const GreyGif = () => {
+  const rendition = '200.webp'
+  const resource = greyGifFactory()
+  const url = [resource, rendition].join('/')
+
+  return <img src={url}
+              alt={'Placeholder'} />
+}
 
 export const GreyGifGridItem = () => (
   <GridItem>

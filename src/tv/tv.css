@@ -18,8 +18,12 @@
   z-index: 0;
 }
 
-.tv video {
+.tv.tv video {
     width: 100%;
     max-width: 100%;
-    display: none;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
 }

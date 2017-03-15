@@ -11,31 +11,37 @@ function makeIterator(array){
 }
 
 export const greyGifs = [
-  'https://media3.giphy.com/media/1OvYypecncSzu/200.webp'
-, 'https://media.giphy.com/media/12Yh9gi5SS7ZPa/200.webp'
-, 'https://media.giphy.com/media/uC9CN9NiKHmQ8/200.webp'
-, 'https://media.giphy.com/media/uSHMDTUL7lKso/200.webp'
-, 'https://media.giphy.com/media/soDqW21ZbC1oc/200.webp'
-, 'https://media.giphy.com/media/WtQlH0mzg8dos/200.webp'
-, 'https://media.giphy.com/media/iYXvjREKcHE0U/200.webp'
-, 'https://media.giphy.com/media/FUkSp2IflZ01W/200.webp'
-, 'https://media2.giphy.com/media/YGSpb7oIhENa/200.webp'
-, 'https://media.giphy.com/media/9PD6etrOTUxby/200.webp'
-, 'https://media1.giphy.com/media/3o6ZsYGqIcdjRpZ2fe/200.webp'
-, 'https://media2.giphy.com/media/QzpYnwlB4Xsze/200.webp'
-, 'https://media3.giphy.com/media/26ufcMjwXjpTHNG1i/200.webp'
-, 'https://media2.giphy.com/media/M1IYu31SWTzmU/200.webp'
-, 'https://media3.giphy.com/media/xT8qAYxFUzxixwKLQY/200.webp'
-, 'https://media3.giphy.com/media/26gjjX9kKQB00IQuc/200.webp'
-, 'https://media2.giphy.com/media/l46Cy4bGg0N0LVEJi/200.webp'
-, 'https://media1.giphy.com/media/xT77XYVKeD6ITAEJK8/200.webp'
-, 'https://media2.giphy.com/media/xTiTnhklD0UFhxqAFy/200.webp'
-, 'https://media3.giphy.com/media/xT77XNlTId0WKcBXnG/200.webp'
-, 'https://media3.giphy.com/media/l41lSxVZVzO1l4tDa/200.webp'
-, 'https://media3.giphy.com/media/ToMjGpn2MqyMOpnZJGU/200.webp'
-, 'https://media.giphy.com/media/gRN7QxcEheT04/200.webp'
-, 'https://media.giphy.com/media/o02p0pTVbPl1S/200.webp'
+  '1OvYypecncSzu'
+, '12Yh9gi5SS7ZPa'
+, 'uC9CN9NiKHmQ8'
+, 'uSHMDTUL7lKso'
+, 'soDqW21ZbC1oc'
+, 'WtQlH0mzg8dos'
+, 'iYXvjREKcHE0U'
+, 'FUkSp2IflZ01W'
+, 'YGSpb7oIhENa'
+, '9PD6etrOTUxby'
+, '3o6ZsYGqIcdjRpZ2fe'
+, 'QzpYnwlB4Xsze'
+, '26ufcMjwXjpTHNG1i'
+, 'M1IYu31SWTzmU'
+, 'xT8qAYxFUzxixwKLQY'
+, '26gjjX9kKQB00IQuc'
+, 'l46Cy4bGg0N0LVEJi'
+, 'xT77XYVKeD6ITAEJK8'
+, 'xTiTnhklD0UFhxqAFy'
+, 'xT77XNlTId0WKcBXnG'
+, 'l41lSxVZVzO1l4tDa'
+, 'ToMjGpn2MqyMOpnZJGU'
+, 'gRN7QxcEheT04'
+, 'o02p0pTVbPl1S'
 ]
 const greyGifsIterator = makeIterator(greyGifs)
-
-export const greyGifFactory = () => greyGifsIterator.next()
+const getCDN = () => {
+    const cdns = ['', 1, 2 ,3]
+    return cdns[~~(Math.random() * cdns.length)]
+}
+export const greyGifFactory = () => {
+  const gifId = greyGifsIterator.next()
+  return `https://media${getCDN()}.giphy.com/media/${gifId}`
+}

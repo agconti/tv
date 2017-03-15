@@ -13,6 +13,7 @@ export default class TVScreen {
     const containerHalfWidth = initialWidth / 2
     const containerHalfHeight = initalHeight / 2
     this.antialias = true
+    this.video = video
     this.clock = new THREE.Clock()
     this.scene = new THREE.Scene()
     this.container =  container
@@ -21,7 +22,6 @@ export default class TVScreen {
     // initalize scene
     this.texture = this.getVideoTexture(video)
     this.renderer = this.getRenderer(this.antialias, containerWidth, containerHeight)
-    this.rendererDomElement = this.renderer.domElement
     this.tvGemometry = new THREE.PlaneBufferGeometry(containerWidth, containerHeight)
     this.tvMaterial = new THREE.MeshBasicMaterial({map: this.texture})
     this.tvMesh = new THREE.Mesh(this.tvGemometry, this.tvMaterial)
@@ -47,7 +47,7 @@ export default class TVScreen {
     this.composer.addPass(renderScene)
     this.composer.addPass(this.effectTV)
 
-    container.appendChild(this.rendererDomElement)
+    container.appendChild(this.renderer.domElement)
     this.animate()
     window.addEventListener('resize', this.onWindowResize.bind(this), false)
   }
@@ -81,6 +81,12 @@ export default class TVScreen {
     this.camera.bottom = clientHeight / - 2
     this.camera.updateProjectionMatrix()
     this.renderer.setSize(clientWidth, clientHeight)
+    this.texture.needsUpdate = true
+    function check (obj, w, h) {
+      const {clientWidth, clientHeight} = obj
+      console.log(w - clientWidth, h - clientHeight)
+     }
+    check(this.video, clientWidth, clientHeight)
     this.composer.reset()
   }
   onWindowResize() {

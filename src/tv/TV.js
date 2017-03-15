@@ -11,6 +11,9 @@ export default class TV extends Component {
   constructor(props){
     super(props)
     this.getAsset = this.getAsset
+    this.getAssetUrl = this.getAssetUrl
+    this.rendition = 'giphy.mp4'
+    this.mediaUrl = 'https://media.giphy.com/media'
   }
   componentWillMount() {
     this.next()
@@ -32,6 +35,9 @@ export default class TV extends Component {
   next() {
     this.setState(this.getAsset())
   }
+  getAssetUrl(resource) {
+    return [this.mediaUrl, resource, this.rendition].join('/')
+  }
   render() {
     const { assetSrc } = this.state
 
@@ -41,8 +47,7 @@ export default class TV extends Component {
         <video ref={el => this.player = el}
                autoPlay
                crossOrigin={'anonymous'}
-               src={assetSrc}>
-        </video>
+               src={this.getAssetUrl(assetSrc)}></video>
       </div>
     )
   }
