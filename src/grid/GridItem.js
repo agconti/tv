@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import './ml.css'
 import './grid.css'
 
-export const GridItem = ({className='', index, activeIndex, children}) => {
-  const active = index === activeIndex? `grid-item--active` : ''
-  className = `ml-item grid-item ${className} ${active}`
+class GridItem extends PureComponent {
+  shouldComponentUpdate(nextProps, nextState) {
+    return true
+  }
+  render() {
+    const {className='', index, activeIndex, children} = this.props
+    const active = index === activeIndex? `grid-item--active` : ''
+    const activeClass = `ml-item grid-item ${className} ${active}`
 
-  return (
-    <div className={className}>
-      <div className={'grid-item__overlay'}></div>
-      {children}
-    </div>
-  )
+    return (
+      <div className={activeClass}>
+        {children}
+        <div className={'grid-item__overlay'}></div>
+      </div>
+    )
+  }
 }
 
 const Image = ({id}) => {
@@ -23,7 +29,7 @@ const Image = ({id}) => {
               alt={'Placeholder'} />
 }
 
-export const ImageGridItem = ({id, index, activeIndex}) => {
+  export const ImageGridItem = ({id, index, activeIndex}) => {
   return (
     <GridItem index={index} activeIndex={activeIndex}>
       <Image id={id}/>

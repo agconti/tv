@@ -30,9 +30,10 @@ class Grid extends Component {
           </div>
         </div>
         <div className={"grid-col grid-col--hero"}>
-          <div className="grid-item grid-item--hero">
+          <div className="grid-item grid-item--active grid-item--hero">
             <TV updateActiveIndex={index => this.setSelectedItemIndex(index)}
                 assets={items} />
+            <div className={"grid-item__overlay"}></div>
           </div>
           <div className={'ml'}>
             {middle}
