@@ -10,7 +10,6 @@ export default class TV extends Component {
   }
   constructor(props){
     super(props)
-    this.getAsset = this.getAsset
     this.getAssetUrl = this.getAssetUrl
     this.rendition = 'giphy.mp4'
     this.mediaUrl = 'https://media.giphy.com/media'
@@ -25,22 +24,22 @@ export default class TV extends Component {
   componentWillUnmount() {
     this.player.removeEventListener('ended', () => this.next())
   }
-  getAsset(prevState, props) {
-    const { assets } = props
-    const { assetIndex } = prevState
-    const nextAssetIndex = assetIndex + 1
-    const assetSrc = assets[nextAssetIndex % assets.length]
-    return {assetSrc, assetIndex: nextAssetIndex}
-  }
-  next() {
-    this.setState(this.getAsset)
-  }
   getAssetUrl(resource) {
     return [this.mediaUrl, resource, this.rendition].join('/')
   }
+  next() {
+    this.setState((prevState, props) => {
+      const { assets, updateActiveIndex } = props
+      const { assetIndex } = prevState
+      const nextAssetIndex = assetIndex + 1
+      const src = this.getAssetUrl(assets[nextAssetIndex % assets.length])
+
+      updateActiveIndex(nextAssetIndex)
+      return {src, assetIndex: nextAssetIndex}
+    })
+  }
   render() {
-    const { assetSrc } = this.state
-    const src = this.getAssetUrl(assetSrc)
+    const { src } = this.state
 
     return (
       <div ref={el => this.container = el}

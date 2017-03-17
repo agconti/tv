@@ -1,29 +1,32 @@
 import React from 'react'
-import { greyGifFactory } from './fixtures'
 import './ml.css'
+import './grid.css'
 
-export const GridItem = ({className='', children}) => (
-  <div className={`ml-item grid-item ${className}`}>
-    {children}
-  </div>
-)
+export const GridItem = ({className='', index, activeIndex, children}) => {
+  const active = index === activeIndex? `grid-item--active` : ''
+  className = `ml-item grid-item ${className} ${active}`
 
-const GreyGif = () => {
+  return (
+    <div className={className}>
+      <div className={'grid-item__overlay'}></div>
+      {children}
+    </div>
+  )
+}
+
+const Image = ({id}) => {
   const rendition = '200.webp'
-  const resource = greyGifFactory()
-  const url = [resource, rendition].join('/')
+  const resource = 'https://media.giphy.com/media'
+  const url = [resource, id, rendition].join('/')
 
   return <img src={url}
               alt={'Placeholder'} />
 }
 
-export const GreyGifGridItem = () => (
-  <GridItem>
-    <GreyGif />
-  </GridItem>
-)
-
-export const getDimensions = contianer => {
-  const { clientWidth, clientHeight} = contianer
-  return { width: clientWidth, height: clientHeight}
+export const ImageGridItem = ({id, index, activeIndex}) => {
+  return (
+    <GridItem index={index} activeIndex={activeIndex}>
+      <Image id={id}/>
+    </GridItem>
+  )
 }

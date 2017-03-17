@@ -1,5 +1,6 @@
 function makeIterator(array){
     let nextIndex = 0;
+
     const next = () => {
       const item = array[nextIndex % array.length]
       nextIndex++
@@ -35,6 +36,23 @@ export const greyGifs = [
 , 'ToMjGpn2MqyMOpnZJGU'
 , 'gRN7QxcEheT04'
 , 'o02p0pTVbPl1S'
+, 'Bm96gh96AEuLC'
+, '1cJld9XimyMow'
+, '133RTEavd8cbvi'
+, '13Nr1F3NwfRKCc'
+, '3rgXBETfAu65Gw6jwA'
+, 'l0Heq2dRAZklin4Qg'
+, 'fenhS6cBBhvXi'
+, 'l3V0c0YnIGh0loPi8'
+, 'M1YMfbzkDZnuo'
+, 'SrmYl2VIymnXG'
+, '10OE5iykeCDCRG'
+, 'xT0GqeM9jUYKeDxzOM'
+, 'g3WikCO1tCIdG'
+, '7Woh5eyruUwGk'
+, 'jEnHPoeK1iJxe'
+, 'pZRzyiaHdrwGY'
+, '4zXZOUnNZP30s'
 ]
 const greyGifsIterator = makeIterator(greyGifs)
 const getCDN = () => {
