@@ -46,7 +46,7 @@ void main() {
 	// scanline
 	float scanlineIntesnsity = 0.125;
 	float scanlineCount = 800.0;
-	float scanline = sin((uv.y) * scanlineCount) * scanlineIntesnsity;
+	float scanline = sin((uv.y * pow(glitchyAnimationCurve, 4.0)) * scanlineCount) * scanlineIntesnsity;
 	col -= scanline;
 
 	// Eskil's vignette
