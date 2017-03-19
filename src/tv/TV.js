@@ -31,8 +31,8 @@ export default class TV extends Component {
     this.setState((prevState, props) => {
       const { assets, updateActiveIndex } = props
       const { assetIndex } = prevState
-      const nextAssetIndex = assetIndex + 1
-      const src = this.getAssetUrl(assets[nextAssetIndex % assets.length])
+      const nextAssetIndex = (assetIndex + 1) % assets.length
+      const src = this.getAssetUrl(assets[nextAssetIndex])
 
       updateActiveIndex(nextAssetIndex)
       return {src, assetIndex: nextAssetIndex}
