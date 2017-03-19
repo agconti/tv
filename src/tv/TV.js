@@ -4,6 +4,8 @@ import './tv.css'
 
 
 export default class TV extends Component {
+  mediaUrl = 'https://media.giphy.com/media'
+  rendition = 'giphy.mp4'
   unstarted = -1
   state = {
     assetIndex: this.unstarted
@@ -11,8 +13,6 @@ export default class TV extends Component {
   constructor(props){
     super(props)
     this.getAssetUrl = this.getAssetUrl
-    this.rendition = 'giphy.mp4'
-    this.mediaUrl = 'https://media.giphy.com/media'
   }
   componentWillMount() {
     this.next()

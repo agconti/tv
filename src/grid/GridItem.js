@@ -7,8 +7,8 @@ class GridItem extends PureComponent {
     return true
   }
   render() {
-    const {className='', index, activeIndex, children} = this.props
-    const active = index === activeIndex? `grid-item--active` : ''
+    const {className='', isActive, children} = this.props
+    const active = isActive? `grid-item--active` : ''
     const activeClass = `ml-item grid-item ${className} ${active}`
 
     return (
@@ -29,9 +29,9 @@ const Image = ({id}) => {
               alt={'Placeholder'} />
 }
 
-  export const ImageGridItem = ({id, index, activeIndex}) => {
+export const ImageGridItem = ({id, isActive}) => {
   return (
-    <GridItem index={index} activeIndex={activeIndex}>
+    <GridItem isActive={isActive}>
       <Image id={id}/>
     </GridItem>
   )

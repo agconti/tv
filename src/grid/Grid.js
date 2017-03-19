@@ -15,7 +15,7 @@ class Grid extends Component {
     const { items } = this.props
     const { activeIndex } = this.state
     const imageGridItems = items.map((id, index) => (
-      <ImageGridItem id={id} key={index} index={index} activeIndex={activeIndex}/>
+      <ImageGridItem id={id} key={index} isActive={index === activeIndex}/>
     ))
     const third = Math.floor(imageGridItems.length / 3)
     const left = imageGridItems.slice(0, third)
@@ -30,11 +30,11 @@ class Grid extends Component {
           </div>
         </div>
         <div className={"grid-col grid-col--hero"}>
-          <div className="grid-item grid-item--active grid-item--hero">
+          <GridItem className={"grid-item--hero"} isActive={true}>
             <TV updateActiveIndex={index => this.setSelectedItemIndex(index)}
                 assets={items} />
             <div className={"grid-item__overlay"}></div>
-          </div>
+          </GridItem>
           <div className={'ml'}>
             {middle}
           </div>
