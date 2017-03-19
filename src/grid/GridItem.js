@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react'
 import './ml.css'
 import './grid.css'
 
-class GridItem extends PureComponent {
+export class GridItem extends PureComponent {
   shouldComponentUpdate(nextProps, nextState) {
-    return true
+    return nextProps.isActive !== nextProps.isActive
   }
   render() {
     const {className='', isActive, children} = this.props

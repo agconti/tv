@@ -29,14 +29,14 @@ void main() {
 
 	// blur
 	vec3 col;
-	float blurDisplacementAmount = 0.04;
+	float blurDisplacementAmount = 0.25;
 	float blur01RangeClamper = 0.5;
-	float animationCurveTwoActionsPerSecond = (1.0 + fract(sin(time * 10.0))) * blur01RangeClamper;
-	float animationCurveThreeActionsPerSecond = (1.0 + sin(time * 12.0)) * blur01RangeClamper;
-	float jaggedAnimationCurve = animationCurveTwoActionsPerSecond * animationCurveTwoActionsPerSecond;
+	float glitchyAnimationCurve = sin(tan(time) * pow(sin(time), 10.0));
+
 	// Increases peak sharpness
-	float blur = pow(jaggedAnimationCurve, 3.0);
+	float blur = pow(glitchyAnimationCurve, 15.0);
   blur *= blurDisplacementAmount;
+
 	// reduce blur towards center
 	blur *= d;
 	col.r = texture2D(tDiffuse, vec2(uv.x + blur, uv.y)).r;

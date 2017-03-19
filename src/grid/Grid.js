@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ImageGridItem } from './GridItem'
+import { GridItem, ImageGridItem } from './GridItem'
 import TV from '../tv/TV'
 import './ml.css'
 import './grid.css'
