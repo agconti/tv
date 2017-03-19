@@ -55,8 +55,13 @@
 .grid-item--active img,
 .grid-item--active .tv {
   border-radius: 1rem;
-  transform: scale(0.9);
   z-index: 1;
+}
+.grid-item--active img {
+  transform: scale(0.9);
+}
+.grid-item--active .tv {
+  transform: scale(0.95, 0.89);
 }
 
 .grid-item img {

@@ -4,7 +4,7 @@ import './grid.css'
 
 export class GridItem extends PureComponent {
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.isActive !== nextProps.isActive
+    return nextProps.isActive !== this.props.isActive
   }
   render() {
     const {className='', isActive, children} = this.props
