@@ -7,28 +7,29 @@ import TVShader from './TVShader'
 
 
 export default class TVScreen {
-  constructor(container, video, initialWidth, initalHeight) {
-    const containerWidth = initialWidth
-    const containerHeight = initalHeight
-    const containerHalfWidth = initialWidth / 2
-    const containerHalfHeight = initalHeight / 2
+  constructor(container, video) {
+    const {clientWidth, clientHeight} = container
+    console.log(clientWidth, clientHeight)
+    const clientHalfWidth = clientWidth / 2
+    const clientHalfHeight = clientHeight / 2
     this.antialias = true
     this.video = video
     this.clock = new THREE.Clock()
     this.scene = new THREE.Scene()
     this.container =  container
-    this.devicePixelRatio = window.devicePixelRatio ? window.devicePixelRatio: 1
+    this.devicePixelRatio = 1
+    // this.devicePixelRatio = window.devicePixelRatio ? window.devicePixelRatio: 1
 
     // initalize scene
     this.texture = this.getVideoTexture(video)
-    this.renderer = this.getRenderer(this.antialias, containerWidth, containerHeight)
-    this.tvGemometry = new THREE.PlaneBufferGeometry(containerWidth, containerHeight)
+    this.renderer = this.getRenderer(this.antialias, clientWidth, clientHeight)
+    this.tvGemometry = new THREE.PlaneBufferGeometry(clientWidth, clientHeight)
     this.tvMaterial = new THREE.MeshBasicMaterial({map: this.texture})
     this.tvMesh = new THREE.Mesh(this.tvGemometry, this.tvMaterial)
     this.scene.add(this.tvMesh)
 
-    this.camera = new THREE.OrthographicCamera(-containerHalfWidth, containerHalfWidth,
-                                               containerHalfHeight, -containerHalfHeight, 1, 10000)
+    this.camera = new THREE.OrthographicCamera(-clientHalfHeight, clientHalfHeight,
+                                                clientHalfWidth, -clientHalfWidth, 1, 10000)
     this.camera.position.z = 1
     this.camera.lookAt(this.tvMesh.position)
 
@@ -40,7 +41,7 @@ export default class TVScreen {
 
     renderScene.uniforms.tDiffuse.value = this.texture
     this.effectTV.uniforms.time.value = this.getTimePassed()
-    this.effectTV.uniforms.resolution.value = new THREE.Vector2(containerWidth, containerHeight)
+    this.effectTV.uniforms.resolution.value = new THREE.Vector2(clientWidth, clientHeight)
     this.effectTV.renderToScreen = true
 
     this.composer.addPass(renderModel)

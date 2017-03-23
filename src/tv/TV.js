@@ -19,7 +19,7 @@ export default class TV extends Component {
   }
   componentDidMount() {
     this.player.addEventListener('ended', () => this.next())
-    this.screen = new TVScreen(this.container, this.player, this.container.clientWidth, this.container.clientHeight)
+    this.screen = new TVScreen(this.container, this.player)
   }
   componentWillUnmount() {
     this.player.removeEventListener('ended', () => this.next())
