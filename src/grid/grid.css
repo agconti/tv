@@ -12,6 +12,7 @@
   justify-content: space-around;
   align-content: space-around;
   max-width: 1600px;
+  margin: 0 auto;
 }
 
 .grid-col {
