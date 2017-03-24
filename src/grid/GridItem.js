@@ -21,12 +21,12 @@ export class GridItem extends PureComponent {
 }
 
 const Image = ({id}) => {
-  const rendition = '200.webp'
-  const resource = 'https://media.giphy.com/media'
-  const url = [resource, id, rendition].join('/')
+  const resource = `https://media.giphy.com/media/${id}`
 
-  return <img src={url}
-              alt={'Placeholder'} />
+  return <img srcSet={`${resource}/200w.gif 200w, ${resource}/200.webp 200w`}
+              sizes={"(max-width: 320px) 290px, (min-width: 321px) 200px"}
+              src={`${resource}/200.webp`}
+              alt={"Oh man, this gif is awesome."} />
 }
 
 export const ImageGridItem = ({id, isActive}) => {
