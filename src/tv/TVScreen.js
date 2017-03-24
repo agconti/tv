@@ -9,7 +9,6 @@ import TVShader from './TVShader'
 export default class TVScreen {
   constructor(container, video) {
     const {clientWidth, clientHeight} = container
-    console.log(clientWidth, clientHeight)
     const clientHalfWidth = clientWidth / 2
     const clientHalfHeight = clientHeight / 2
     this.antialias = true
@@ -83,11 +82,7 @@ export default class TVScreen {
     this.camera.updateProjectionMatrix()
     this.renderer.setSize(clientWidth, clientHeight)
     this.texture.needsUpdate = true
-    function check (obj, w, h) {
-      const {clientWidth, clientHeight} = obj
-      console.log(w - clientWidth, h - clientHeight)
-     }
-    check(this.video, clientWidth, clientHeight)
+
     this.composer.reset()
   }
   onWindowResize() {

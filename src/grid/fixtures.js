@@ -58,7 +58,9 @@ export const greyGifs = [
 , 'DYH7Sx4ckPh4s'
 , 'ACRMOUmeQ2lEc'
 ]
+
 const greyGifsIterator = makeIterator(greyGifs)
+
 const getCDN = () => {
     const cdns = ['', 1, 2 ,3]
     return cdns[~~(Math.random() * cdns.length)]
