@@ -1,5 +1,6 @@
 # tv
-![tv]()
+![tv](https://media.giphy.com/media/l4FGIUP7ctUBrk0W4/giphy.gif)
+
 less of a slide show, more like a tv.
 
 This is more of an art project then a serious perspective of what the giphy tv experince could be. The goal was to provide a an example of the breath of the effects we can use on gifs using only client side processing power and to explore what our site might look like if it was fully responsive.
