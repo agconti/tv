@@ -62,7 +62,7 @@ export const greyGifs = [
 const greyGifsIterator = makeIterator(greyGifs)
 
 const getCDN = () => {
-    const cdns = ['', 1, 2 ,3]
+    const cdns = [5, 6, 7 ,8]
     return cdns[~~(Math.random() * cdns.length)]
 }
 export const greyGifFactory = () => {
