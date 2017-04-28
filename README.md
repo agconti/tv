@@ -9,8 +9,8 @@ Check out it out [here](https://agconti.github.io/tv/).
 
 ## Features
 - Live postprocessing of gifs for a _artsy_ busted tv effect using webgl [shaders](https://github.com/agconti/tv/blob/master/src/tv/TVShader.js).
-- Fully responsive gif grid using a [CSS multi-column layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts) that supports tv and tv-less grids.
-- Dynamically changes to gifs from webps for mobile using `srcSet` over browser sniffing
+- Fully [responsive gif grid](https://github.com/agconti/tv/blob/master/src/grid/ml.css) using a [CSS multi-column layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts) that supports tv and tv-less grids.
+- Dynamically changes to gifs from webps for mobile using [`srcSet`](https://github.com/agconti/tv/blob/0a046cf845ef6e601f7668e3fd9e4157907fa245/src/grid/GridItem.js#L26-L29) over browser sniffing
 - A redone tv that only needs a list of gif ids
 - Supporting react grid components.
 
