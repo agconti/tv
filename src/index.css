@@ -1,6 +1,6 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-color: rgba(0, 0, 0, 0.03);
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.03);
 }

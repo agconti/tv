@@ -64,9 +64,11 @@
   border-radius: 1rem;
   z-index: 1;
 }
+
 .grid-item--active img {
   transform: scale(0.83);
 }
+
 .grid-item img {
   display: block;
   position: relative;
@@ -83,7 +85,7 @@
   padding: 0.938em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
   .grid-col {
     width: 100%;
   }

@@ -19,13 +19,13 @@
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .ml-item {
     break-inside: avoid;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
   .ml {
     column-count: 2;
     column-gap: 0.938em;
