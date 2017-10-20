@@ -65,7 +65,7 @@ const uniforms = {
 , vignetteDarkness: { value: 0.7 }
 }
 const TVShader = {
-	uniforms
+  uniforms
 , vertexShader
 , fragmentShader
 }

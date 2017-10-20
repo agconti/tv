@@ -17,7 +17,6 @@ export default class TVScreen {
     this.scene = new THREE.Scene()
     this.container =  container
     this.devicePixelRatio = 1
-    // this.devicePixelRatio = window.devicePixelRatio ? window.devicePixelRatio: 1
 
     // initalize scene
     this.texture = this.getVideoTexture(video)
